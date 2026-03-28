@@ -59,14 +59,9 @@ export default function Home() {
   const [direction, setDirection] = useState(1);
   const navigate = useNavigate();
 
-  const [showAllKits, setShowAllKits] = useState(false);
-  const [showAllSpots, setShowAllSpots] = useState(false);
-
   const changeLayer = (newLayer: string, dir: number) => {
     setDirection(dir);
     setLayer(newLayer);
-    setShowAllKits(false);
-    setShowAllSpots(false);
   };
 
   const currentGridIndex = layer === 'root' ? rootCategories : subCategories[layer];
@@ -132,7 +127,7 @@ export default function Home() {
               if (isRoot && !isCenter && s) {
                   containerClass = `${s.bg} border-[3px] sm:border-4 border-[#111827] shadow-[5px_5px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] overflow-hidden relative`;
                   textWrapper = "absolute top-1 sm:top-3 w-full text-center z-20 px-1";
-                  typography = `text-[13px] sm:text-2xl ${s.font} text-[#111827] px-1 sm:px-3 py-1 bg-white border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 transform inline-block`;
+                  typography = `text-[13px] sm:text-2xl ${s.font} text-[#111827] px-1 sm:px-3 py-1 bg-white border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#E23B2A] -rotate-3 transform inline-block`;
               } else if (isCenter) {
                   containerClass = isRoot ? "bg-[#E23B2A] border-[4px] border-[#111827] shadow-[5px_5px_0px_#111827]" : "bg-white border-[4px] border-[#111827] shadow-[5px_5px_0px_#111827]";
                   typography = isRoot ? "text-xl sm:text-5xl font-['Black_Han_Sans'] text-white drop-shadow-[2px_2px_0px_#111827]" : "text-base sm:text-3xl font-['Black_Han_Sans'] text-[#E23B2A] drop-shadow-[2px_2px_0px_#111827]";
@@ -170,57 +165,32 @@ export default function Home() {
                     <p className="text-[10px] sm:text-xs text-gray-500 font-medium pb-1 leading-tight">이 포스팅은 쿠팡 파트너스 활동의 일환으로 수수료를 제공받습니다.</p>
                   </div>
                   
-                  <motion.div layout className="relative w-full">
-                    <motion.div layout className={`grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 pt-4 pb-2 place-items-center ${showAllKits ? 'max-h-[800px] overflow-y-auto pr-2 custom-scrollbar' : ''}`}>
-                        <AnimatePresence initial={false}>
-                          {(() => {
-                              const currentData = MEAL_KITS[layer] || MEAL_KITS['root'] || [];
-                              const initialLimit = 3;
-                              const displayItems = showAllKits ? currentData : currentData.slice(0, initialLimit);
-                              return displayItems.map((item, idx) => (
-                               <motion.div 
-                                 key={item.id} 
-                                 layout 
-                                 initial={{ opacity: 0, scale: 0.9 }} 
-                                 animate={{ opacity: 1, scale: 1 }} 
-                                 exit={{ opacity: 0, scale: 0.9 }}
-                                 className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[285px] sm:h-[295px]"
-                               >
-                                    {layer === 'root' && idx === 0 && <div className="absolute -top-4 -left-2 z-30 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
-                                    {layer === 'root' && idx === 1 && <div className="absolute -top-4 -left-2 z-30 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}
-                                    {layer === 'root' && idx === 2 && <div className="absolute -top-4 -left-2 z-30 bg-[#FF9800] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[5deg] whitespace-nowrap">🍝 양식</div>}
-                                    {item.html && <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl bg-white" dangerouslySetInnerHTML={{ __html: item.html }} />}
-                               </motion.div>
-                              ));
-                          })()}
-                        </AnimatePresence>
-                    </motion.div>
-                  </motion.div>
-                  {(() => {
-                      const data = MEAL_KITS[layer] || MEAL_KITS['root'] || [];
-                      if (data.length > 3) {
-                        return (
-                          <motion.button layout onClick={() => setShowAllKits(!showAllKits)} className="w-full mt-8 py-3 bg-[#111827] text-white font-['Black_Han_Sans'] text-xl rounded-xl hover:bg-gray-800 transition-colors shadow-[2px_2px_0px_#FF0080]">
-                              {showAllKits ? '↑ 간단히 접기' : `+ ${data.length - 3}개 더 보기`}
-                          </motion.button>
-                        );
-                      }
-                  })()}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 pb-2 place-items-center">
+                    {(() => {
+                        const currentData = MEAL_KITS[layer] || MEAL_KITS['root'] || [];
+                        const displayItems = currentData.slice(0, 4);
+                        return displayItems.map((item, idx) => (
+                         <div key={item.id} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[285px] sm:h-[295px]">
+                              {layer === 'root' && idx === 0 && <div className="absolute -top-4 -left-2 z-30 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
+                              {layer === 'root' && idx === 1 && <div className="absolute -top-4 -left-2 z-30 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}
+                              {layer === 'root' && idx === 2 && <div className="absolute -top-4 -left-2 z-30 bg-[#FF9800] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[5deg] whitespace-nowrap">🍝 양식</div>}
+                              {item.html && <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl bg-white" dangerouslySetInnerHTML={{ __html: item.html }} />}
+                         </div>
+                        ));
+                    })()}
+                  </div>
                 </section>
 
                 <section className="bg-[#FFF9C4] border-[4px] border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827]">
                   <h2 className="text-2xl sm:text-3xl font-['Black_Han_Sans'] mb-4 text-[#E23B2A]">🔥 요즘 핫한 가게</h2>
-                  <div className={`flex flex-col gap-3 ${showAllSpots ? 'max-h-[360px] overflow-y-auto pr-2 custom-scrollbar' : ''}`}>
-                      {HOT_SPOTS.slice(0, showAllSpots ? HOT_SPOTS.length : 3).map((item) => (
+                  <div className="flex flex-col gap-3">
+                      {HOT_SPOTS.slice(0, 3).map((item) => (
                            <a key={item.id} href={item.linkUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-3 bg-white border-[3px] border-[#111827] rounded-xl shadow-[3px_3px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
                                 <img src={item.imageUrl} alt={item.name} className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg border-2 border-[#111827]" />
                                 <div className="flex flex-col text-left"><span className="font-bold text-sm sm:text-lg text-gray-800">{item.name}</span><span className="text-xs sm:text-sm text-gray-500">{item.chef}</span></div>
                            </a>
                       ))}
                   </div>
-                  {!showAllSpots && HOT_SPOTS.length > 3 && (
-                      <button onClick={() => setShowAllSpots(true)} className="w-full mt-5 py-3 bg-[#111827] text-white font-['Black_Han_Sans'] text-xl rounded-xl hover:bg-gray-800 transition-colors shadow-[2px_2px_0px_#E23B2A]">+ 더 보기</button>
-                  )}
                 </section>
             </div>
         )}
