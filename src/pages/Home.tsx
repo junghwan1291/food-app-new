@@ -189,7 +189,7 @@ export default function Home() {
                                     {layer === 'root' && idx === 0 && <div className="absolute -top-4 -left-2 z-30 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
                                     {layer === 'root' && idx === 1 && <div className="absolute -top-4 -left-2 z-30 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}
                                     {layer === 'root' && idx === 2 && <div className="absolute -top-4 -left-2 z-30 bg-[#FF9800] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[5deg] whitespace-nowrap">🍝 양식</div>}
-                                    {item.html && <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl" dangerouslySetInnerHTML={{ __html: item.html }} />}
+                                    {item.html && <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl bg-white" dangerouslySetInnerHTML={{ __html: item.html }} />}
                                </motion.div>
                               ));
                           })()}

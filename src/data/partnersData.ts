@@ -1,7 +1,5 @@
 /**
  * 🛠️ [관리자 전용 데이터베이스 파일 - 카테고리 맞춤형 버전]
- * 
- * 이제 각 카테고리(한식, 중식, 일식 등)에 맞춰 밀키트를 다르게 설정할 수 있습니다!
  */
 
 export interface MealKit {
@@ -11,32 +9,32 @@ export interface MealKit {
 
 // 카테고리별 밀키트 매핑 데이터
 export const MEAL_KITS: Record<string, MealKit[]> = {
-  // 🏠 [랜딩페이지 전용]
+  // 🏠 [랜딩페이지 전용] - 현재 가장 잘 작동하는 링크(Coca-Cola 등)로 임시 대체하여 검은 박스 오류 테스트
   root: [
-    { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
-    { id: 2, html: `<iframe src="https://coupa.ng/cl7s3a" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
-    { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 1, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 2, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 3, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
     { id: 4, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
     { id: 5, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
     { id: 6, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
   ],
 
   '한식': [
-    { id: 101, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
-    { id: 102, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
-    { id: 103, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 101, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 102, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 103, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
   ],
 
   '중식': [
-    { id: 201, html: `<iframe src="https://coupa.ng/cl7s3a" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
-    { id: 202, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 201, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 202, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
     { id: 203, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
   ],
 
   '양식': [
-    { id: 301, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 301, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
     { id: 302, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
-    { id: 303, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+    { id: 303, html: `<iframe src="https://coupa.ng/cl7syd" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
   ]
 };
 
