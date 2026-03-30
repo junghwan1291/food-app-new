@@ -5,41 +5,118 @@ import { MEAL_KITS, HOT_SPOTS } from '../data/partnersData';
 
 // --- 데이터베이스 ---
 
-const rootCategories: string[] = ['한식', '중식', '일식', '양식', '배고픔', '분식', '야식', '디저트', '기타'];
+const rootCategories: string[] = ['한식', '중식', '일식', '양식', '오늘 뭐 먹지?', '분식/야식', '패스트푸드', '디저트', '기타'];
 
 const subCategories: Record<string, string[]> = {
-  '한식': ['찌개/전골', '국밥/탕', '덮밥/비빔밥', '찜/볶음류', '뒤로가기', '생선/해물', '고기구이', '면류', '기타 한식'],
-  '중식': ['면류(짜장/짬뽕)', '밥류/볶음밥', '튀김/육류', '만두/딤섬', '뒤로가기', '해물류', '마라/사천', '코스요리', '기타 중식'],
-  '일식': ['초밥/롤', '라멘/소바', '돈카츠/튀김', '덮밥(돈부리)', '뒤로가기', '사시미', '우동', '철판/구이', '기타 일식'],
-  '양식': ['파스타', '피자', '스테이크', '수제버거', '뒤로가기', '리조또/필라프', '샐러드/스프', '샌드위치', '기타 양식'],
-  '분식': ['떡볶이', '순대/내장', '튀김류', '김밥/주먹밥', '뒤로가기', '오뎅/국물', '라면/우동', '돈까스', '기타 분식'],
-  '야식': ['치킨', '족발/보쌈', '닭발/오돌뼈', '곱창/막창', '뒤로가기', '피자/버거', '매운탕', '건어물/건과', '기타 야식'],
-  '디저트': ['케이크/타르트', '아이스크림', '마카롱/쿠키', '빙수류', '뒤로가기', '크로플/와플', '빵/베이커리', '건강/과일', '카페 음료'],
-  '기타': ['인도 커리', '베트남 쌀국수', '멕시칸 타코', '태국 팟타이', '뒤로가기', '아시안 볶음', '마라샹궈', '샤브샤브', '월남쌈/기타'],
+  '한식': ['찌개/전골', '국밥/탕', '구이/볶음', '찜/조림', '뒤로가기', '생선/해물', '비빔밥/죽', '국수/냉면', '기타 한식/도시락'],
+  '중식': ['짜장/짬뽕', '탕수육/튀김', '마라/볶음요리', '밥류(볶음밥 등)', '뒤로가기', '만두/딤섬', '냉면/콩국수', '일품요리(양장피 등)', '세트메뉴'],
+  '일식': ['초밥(스시)', '돈까스', '라멘/소바', '덮밥(돈부리)', '뒤로가기', '우동/나베', '카레', '텐동(튀김덮밥)', '회/해산물'],
+  '양식': ['파스타', '스테이크', '리조또/필라프', '피자', '뒤로가기', '샐러드/포케', '오므라이스', '수프/브런치', '사이드(감자튀김 등)'],
+  '분식/야식': ['떡볶이', '튀김/순대', '김밥', '라면/우동', '뒤로가기', '닭발/오돌뼈', '곱창/막창', '전/부침개', '아구찜/해물찜'],
+  '패스트푸드': ['치킨(후라이드)', '치킨(양념)', '치킨(구이)', '햄버거 세트', '뒤로가기', '수제버거', '샌드위치/토스트', '핫도그', '타코/브리또'],
+  '디저트': ['커피', '논커피/라떼', '에이드/주스', '케이크/타르트', '뒤로가기', '베이커리/빵', '와플/크로플', '빙수', '요거트/아이스크림'],
+  '기타': ['쌀국수(베트남)', '똠양꿍(태국)', '팟타이', '카레(인도)', '뒤로가기', '케밥', '도시락(편의점형)', '밀키트 세트', '채식/비건']
 };
 
-const listData: Record<string, string[]> = {
-  '찌개/전골': ['돼지김치찌개', '차돌된장찌개', '해물순두부찌개', '스팸부대찌개', '동태찌개', '우삼겹 청국장', '돼지짜글이', '버섯 불고기 전골', '소곱창전골'],
-  '국밥/탕': ['얼큰 순대국', '부산 돼지국밥', '뼈해장국', '설렁탕', '나주 곰탕', '특 갈비탕', '한방 삼계탕', '전통 육개장', '추어탕'],
-  '덮밥/비빔밥': ['돌솥비빔밥', '전통 전주비빔밥', '육회비빔밥', '매콤 불오징어덮밥', '제육덮밥', '스팸 김치볶음밥', '새우 볶음밥'],
-  '고기구이': ['벌집 통삼겹살', '소금구이 목살', '깍둑 항정살', '양념 돼지갈비', '소갈비구이', '한우 꽃등심', '차돌박이 구이', '모둠 특수부위'],
-  '면류': ['살얼음 물냉면', '매콤달콤 비빔냉면', '바지락 칼국수', '뜨끈한 잔치국수', '새콤 비빔국수', '들깨 수제비', '춘천 막국수', '쫄면'],
+const menusBySubCategory: Record<string, string[]> = {
+  // 한식
+  '찌개/전골': ['돼지김치찌개', '참치김치찌개', '스팸김치찌개', '차돌된장찌개', '우렁된장찌개', '해물된장찌개', '부대찌개', '순두부찌개', '청국장', '동태찌개', '소곱창전골', '버섯불고기전골', '밀푀유나베', '만두전골', '감자탕'],
+  '국밥/탕': ['순대국밥', '수육국밥', '부산돼지국밥', '밀양돼지국밥', '뼈해장국', '양평해장국', '선지해장국', '설렁탕', '나주곰탕', '꼬리곰탕', '왕갈비탕', '소머리국밥', '콩나물국밥', '황태해장국', '추어탕', '삼계탕', '육개장'],
+  '구이/볶음': ['매콤제육볶음', '오징어볶음', '낙지볶음', '쭈꾸미볶음', '뚝배기불고기', '바싹불고기', '돼지양념갈비', '삼겹살구이', '목살소금구이', '차돌박이구이', '더덕구이', '황태구이', '오리주물럭', '닭갈비'],
+  '찜/조림': ['돼지갈비찜', '소갈비찜', '매운소갈비찜', '묵은지등갈비찜', '안동찜닭', '매콤닭볶음탕', '고등어무조림', '갈치조림', '코다리조림', '두부조림', '감자조림', '우엉조림'],
+  '생선/해물': ['고등어구이', '가자미구이', '삼치구이', '조기구이', '매콤해물찜', '아구찜', '알찜', '대구뽈찜', '꽃게탕', '연포탕', '오징어숙회', '왕새우소금구이', '해물파전', '꼬막무침'],
+  '비빔밥/죽': ['전주비빔밥', '돌솥비빔밥', '육회비빔밥', '꼬막비빔밥', '낙지비빔밥', '산채비빔밥', '참치마요비빔밥', '전복죽', '야채죽', '소고기버섯죽', '단호박죽', '동지팥죽', '낙지김치죽', '흑임자죽'],
+  '국수/냉면': ['살얼음물냉면', '매콤비빔냉면', '코다리회냉면', '평양냉면', '뜨끈한 잔치국수', '새콤비빔국수', '바지락칼국수', '얼큰칼국수', '닭칼국수', '들깨수제비', '춘천막국수', '고기국수', '여름콩국수', '열무국수'],
+  '기타 한식/도시락': ['한정식 코스', '11찬 정식', '떡갈비정식', '보리밥정식', '쌈밥정식', '우렁쌈밥', '수제 편의점도시락', '제육도시락', '돈까스도시락', '충무김밥', '연잎밥', '구절판', '신선로'],
+
+  // 중식
+  '짜장/짬뽕': ['옛날짜장면', '간짜장', '해물쟁반짜장', '유니짜장', '사천짜장', '고추짜장', '얼큰짬뽕', '삼선해물짬뽕', '차돌박이짬뽕', '백짬뽕', '굴짬뽕', '볶음짬뽕', '짬짜면'],
+  '탕수육/튀김': ['전통탕수육', '찹쌀탕수육(꿔바로우)', '사천탕수육', '소고기탕수육', '깐풍기', '유린기', '크림새우', '칠리새우', '깐풍새우', '멘보샤', '가지튀김', '새우튀김'],
+  '마라/볶음요리': ['마라탕', '마라샹궈', '마라훠궈', '고추잡채', '마파두부', '팔보채', '유산슬', '어향가지', '토마토계란볶음', '경장육사', '라조기', '라조육'],
+  '밥류(볶음밥 등)': ['고슬고슬 계란볶음밥', '새우볶음밥', '게살볶음밥', '잡채밥', '마파두부밥', '중화비빔밥', '유산슬밥', '고추잡채밥', '짜장밥', '짬뽕밥', '오므라이스(중식)'],
+  '만두/딤섬': ['바삭 군만두', '촉촉 물만두', '수제 찐만두', '왕만두', '샤오롱바오(소룡포)', '하가우', '쇼마이', '새우딤섬', '부추만두', '꽃빵과 연유', '춘권'],
+  '냉면/콩국수': ['중국식 냉면', '해물냉면', '고소한 콩국수', '비빔냉면', '물밀면', '비빔밀면', '중화냉짬뽕'],
+  '일품요리(양장피 등)': ['톡쏘는 양장피', '전가복', '오향장육', '동파육', '난자완스', '해삼탕', '불도장', '베이징덕(북경오리)', '해파리냉채'],
+  '세트메뉴': ['짜장+짬뽕+탕수육', '깐풍기+짜장2', '마라탕+꿔바로우', '볶음밥+미니탕수육', '1인 탕짜면', '1인 탕볶밥', '가족코스 요리 A', '프리미엄 코스 B'],
+
+  // 일식
+  '초밥(스시)': ['스페셜 모듬초밥', '생연어초밥', '대광어초밥', '간장새우초밥', '민물장어초밥', '계란초밥', '참다랑어(참치)초밥', '소고기타다끼초밥', '캘리포니아롤', '대왕 후토마끼', '유부초밥'],
+  '돈까스': ['두툼 등심돈까스(로스)', '부드러운 안심돈까스(히레)', '치즈폭포 돈까스', '고구마치즈돈까스', '추억의 경양식돈까스', '생선까스', '치킨카츠', '멘치카츠', '매운돈까스', '돈까스나베'],
+  '라멘/소바': ['진한 돈코츠라멘', '구수한 미소라멘', '깔끔한 쇼유라멘', '시오라멘', '매콤 탄탄멘', '마제소바', '아부라소바', '시원한 냉모밀(소바)', '판모밀', '냉우동'],
+  '덮밥(돈부리)': ['촉촉한 가츠동(돈까스)', '에비동(새우튀김)', '규동(소고기)', '오야꼬동(닭고기)', '사케동(생연어)', '텐동(모듬튀김)', '우나기동(민물장어)', '호르몬동(대창)', '스테키동'],
+  '우동/나베': ['뜨끈한 가락우동', '새우튀김우동', '사누키 어묵우동', '김치우동', '카레우동', '밀푀유나베', '모츠나베(대창전골)', '창코나베', '관동식 스키야키', '샤브샤브'],
+  '카레': ['일본식 비프카레', '포크카레', '치킨카레', '새우튀김카레', '수제돈까스 카레', '반반카레', '고로케카레', '야채카레', '함박스테이크 카레'],
+  '텐동(튀김덮밥)': ['바삭 에비텐동(새우)', '아나고텐동(장어)', '야채텐동', '스페셜텐동', '이카텐동(오징어)', '모듬 덴푸라', '가라아게동'],
+  '회/해산물': ['고급 모듬사시미', '생연어사시미', '광어사시미', '혼마구로 참치회', '방어회', '타코와사비', '메로구이', '시샤모구이', '연어머리구이', '단새우회', '성게알(우니)'],
+
+  // 양식
+  '파스타': ['정통 까르보나라', '알리오올리오', '해산물 토마토파스타', '볼로네제 파스타', '꾸덕 로제파스타', '봉골레파스타', '매콤 투움바파스타', '트러플 크림파스타', '명란오일파스타', '바질페스토 파스타', '라자냐', '빠네크림파스타'],
+  '스테이크': ['부드러운 안심스테이크', '육즙가득 등심스테이크', '채끝살스테이크', '가성비 부채살스테이크', '티본스테이크', '토마호크스테이크', '수제 함박스테이크', '찹스테이크', '포크스트립 플래터', '살치살스테이크'],
+  '리조또/필라프': ['트러플 머쉬룸크림리조또', '해산물 토마토리조또', '베이컨 크림리조또', '오징어먹물리조또', '로제리조또', '통새우필라프', '목살필라프', '김치베이컨필라프', '치킨가라아게 필라프'],
+  '피자': ['마르게리따 피자', '꿀찍는 고르곤졸라', '짭짤한 페퍼로니피자', '콤비네이션 피자', '리얼 불고기피자', '베이컨포테이토 듬뿍피자', '하와이안 피자', '치즈 듬뿍 시카고피자', '고구마무스 피자', '마스카포네 치즈피자'],
+  '샐러드/포케': ['리코타치즈 샐러드', '생연어 샐러드', '수비드 닭가슴살 샐러드', '카프레제 샐러드', '치킨시저 샐러드', '단호박 샐러드', '생연어 포케', '참치 포케', '그릴드비프 포케', '쉬림프 샐러드'],
+  '오므라이스': ['추억의 전통오므라이스', '진한 데미글라스오므라이스', '회오리 토네이도오므라이스', '부드러운 크림소스오므라이스', '매콤 김치오므라이스', '돈까스 오므라이스', '소시지 오므라이스'],
+  '수프/브런치': ['진한 양송이스프', '달콤 콘스프', '단호박스프', '조개 클램차우더', '브런치 에그베네딕트', '메이플 팬케이크', '폭신 프렌치토스트', '잉글리시 블랙퍼스트', '아사이볼', '크로크무슈'],
+  '사이드(감자튀김 등)': ['바삭 프렌치프라이', '케이준 웨지감자', '모짜렐라 치즈스틱', '어니언링', '매콤 버팔로윙', '마늘빵(갈릭바게트)', '상큼 콘샐러드', '해쉬브라운', '나초치즈', '치즈볼'],
+
+  // 분식/야식
+  '떡볶이': ['매콤달콤 배달떡볶이', '꾸덕 국물떡볶이', '인기폭발 로제떡볶이', '짜장떡볶이', '얼얼한 마라떡볶이', '치즈폭탄 떡볶이', '쫀득 가래떡떡볶이', '사리듬뿍 즉석떡볶이', '라볶이', '까르보나라 떡볶이', '옛날 학교앞 떡볶이'],
+  '튀김/순대': ['바삭바삭 모듬튀김', '당면가득 김말이', '대왕 오징어튀김', '왕새우튀김', '달콤 고구마튀김', '야끼만두', '쫄깃 찰순대', '내장포함 옛날순대', '매콤달콤 순대볶음', '백순대볶음'],
+  '김밥': ['꽉찬 원조김밥', '마요듬뿍 참치김밥', '모짜렐라 치즈김밥', '바삭 돈까스김밥', '통새우튀김김밥', '매콤 멸치추땡김밥', '다이어트 계란지단김밥(키토)', '통영 충무김밥', '묵은지참치김밥', '꼬마김밥'],
+  '라면/우동': ['계란탁 신라면', '고소한 치즈라면', '물만두라면', '해물 듬뿍라면', '쫄깃 떡라면', '김천st 가락우동', '매콤새콤 쫄면', '비빔만두', '잔치국수', '어묵탕'],
+  '닭발/오돌뼈': ['매운 국물닭발', '숯불 무뼈닭발', '콜라겐 통뼈닭발', '숯불 직화닭발', '오독오독 오돌뼈볶음', '김가루 주먹밥', '포슬포슬 계란찜', '치즈불닭'],
+  '곱창/막창': ['당면가득 야채곱창', '마늘듬뿍 알곱창', '찰순대 곱창볶음', '지글지글 소곱창구이', '고소한 돼지막창구이', '매운 불막창', '대창구이', '특양구이', '곱창전골', '염통구이'],
+  '전/부침개': ['바삭 해물파전', '매콤 김치전', '오징어 부추전', '쫀득 바삭 감자전', '두툼 녹두전', '명절 모듬전', '고소한 소고기육전', '동태전', '깻잎전', '호박전'],
+  '아구찜/해물찜': ['매콤 콩나물아구찜', '푸짐 해물찜', '고소한 알찜', '대구뽈찜', '꽃게찜', '아구탕', '해물탕', '낙지볶음', '동태탕'],
+
+  // 패스트푸드
+  '치킨(후라이드)': ['바삭 황금올리브 치킨', '크리스피 치킨', '추억의 옛날통닭', '순살 후라이드', '달콤 바삭 닭강정', '알싸한 파닭', '윙봉 콤보', '핫후라이드', '간장마늘 치킨'],
+  '치킨(양념)': ['전통 양념치킨', '눈물찔끔 매운양념치킨', '단짠 간장치킨', '알싸 마늘간장치킨', '단짠 마법뿌링클 치킨', '부드러운 슈프림양념치킨', '고추마요 치킨', '치즈볼 추가'],
+  '치킨(구이)': ['오븐구이 로스트치킨', '매콤 바베큐치킨', '숯불양념구이', '담백한 소금구이', '갈릭 로스트치킨', '순살 바베큐', '데리야끼 오븐구이'],
+  '햄버거 세트': ['클래식 빅맥 세트', '직화 불맛 와퍼 세트', '달콤 불고기버거 세트', '가성비 싸이버거 세트', '치즈버거 세트', '탱글 새우버거 세트', '푸짐 타워버거 세트', '치킨버거 세트', '모짜렐라인더버거 세트'],
+  '수제버거': ['베이컨치즈 버거', '트러플 머쉬룸 버거', '육즙왕 더블패티 버거', '새우통살 버거', '아보카도 버거', '바삭 해쉬브라운 버거', '치즈폭포 수제버거', '스파이시 치킨버거'],
+  '샌드위치/토스트': ['달콤 에그토스트', '버터구이 햄치즈토스트', '추억의 길거리토스트', '든든한 클럽샌드위치', '베이컨 BLT샌드위치', '훈제 연어샌드위치', '부드러운 에그마요샌드위치', '치킨텐더 샌드위치', '카야토스트'],
+  '핫도그': ['바삭 명랑핫도그', '도깨비 방망이 감자핫도그', '쭉~늘어나는 모짜렐라치즈핫도그', '오징어먹물핫도그', '육즙팡팡 소시지핫도그', '체다치즈 핫도그', '라면스낵 핫도그'],
+  '타코/브리또': ['정통 비프타코', '스파이시 포크타코', '치킨 브리또', '비프 브리또', '치즈듬뿍 퀘사디아', '과카몰리와 나초', '또띠아 파히타 플래터', '엔칠라다', '부리또볼'],
+
+  // 디저트
+  '커피': ['깔끔한 아메리카노', '달콤 헤이즐넛 아메리카노', '부드러운 콜드브루', '밤에도 디카페인 아메리카노', '진한 에스프레소', '드립 커피', '아인슈페너'],
+  '논커피/라떼': ['고소한 카페라떼', '달콤 바닐라라떼', '카라멜 마끼아또', '달콤쌉쌀 카페모카', '제주 녹차라떼', '리얼 초코라떼', '로열 밀크티', '자색 고구마라떼', '흑당 버블티', '말차라떼'],
+  '에이드/주스': ['상큼 자몽에이드', '청량 레몬에이드', '달콤 청포도에이드', '생과일 딸기바나나주스', '새콤 키위주스', '건강 토마토주스', '100% 착즙 오렌지주스', '시원한 자두스무디', '망고스무디', '블루베리스무디'],
+  '케이크/타르트': ['진한 뉴욕 치즈케이크', '꾸덕 초코케이크', '살살녹는 티라미수', '과일 듬뿍 생크림케이크', '상큼 딸기케이크', '겉바속촉 에그타르트', '고소한 호두타르트', '상큼 과일타르트', '레드벨벳 케이크', '당근 케이크'],
+  '베이커리/빵': ['버터동굴 소금빵', '결이살아있는 크루아상', '플레인 베이글', '달콤고소 앙버터', '치즈 스콘', '우유 식빵', '촉촉 마늘빵', '건강한 호밀빵', '달콤 모카빵', '까눌레', '마들렌'],
+  '와플/크로플': ['바삭바삭 크로플', '아이스크림 얹은 크로플', '리에주 벨기에 와플', '사과잼 가득 씬와플', '악마의 누텔라 와플', '딸기잼 와플', '초코칩 와플', '생크림 폭탄 와플'],
+  '빙수': ['눈꽃 인절미빙수', '전통 팥빙수', '상큼 애플망고빙수', '생딸기 듬뿍 빙수', '달콤 메론빙수', '오레오 초코빙수', '쌉쌀 녹차빙수', '치즈케이크 빙수', '복숭아 빙수'],
+  '요거트/아이스크림': ['꾸덕꾸덕 그릭요거트', '상큼 요거트아이스크림', '클래식 바닐라아이스크림', '진한 초코아이스크림', '이탈리안 쫀득 젤라또', '알록달록 구슬아이스크림', '소프트아이스크림', '파르페'],
+
+  // 기타
+  '쌀국수(베트남)': ['진한 소고기쌀국수', '고소한 차돌박이쌀국수', '시원한 해물쌀국수', '깔끔 양지쌀국수', '매콤 얼큰쌀국수', '새콤달콤 분짜', '바삭한 반미 샌드위치', '짜조(스프링롤)', '월남쌈'],
+  '똠양꿍(태국)': ['새콤매콤 똠양꿍', '코코넛 똠카가이', '상큼 얌운센', '매콤 솜땀(파파야 샐러드)', '뿌팟퐁커리', '무쌉', '모닝글로리 볶음'],
+  '팟타이': ['통새우 팟타이', '담백한 치킨 팟타이', '넓은면 팟씨유', '인도네시아 나시고랭', '볶음면 미고랭', '파인애플 볶음밥'],
+  '카레(인도)': ['부드러운 버터치킨마크니', '시금치치즈 팔락파니르', '매콤 치킨티카마살라', '톡쏘는 램빈달루', '화덕에 구운 난(갈릭/버터)', '매콤 탄두리치킨', '라씨(요구르트 음료)', '사모사'],
+  '케밥': ['터키식 치킨케밥', '풍미가득 양고기케밥', '치킨+양 믹스케밥', '먹기편한 케밥랩', '쫀득 터키아이스크림', '바클라바(터키 디저트)', '피데(터키식 피자)'],
+  '도시락(편의점형)': ['매콤 제육볶음도시락', '든든한 돈까스도시락', '달콤 치킨마요덮밥', '야채가득 비빔밥도시락', '푸짐 11찬도시락', '단짠 스팸마요도시락', '연어스테이크 도시락', '소불고기 도시락'],
+  '밀키트 세트': ['와인안주 감바스알아히요 밀키트', '국물요리 밀푀유나베 밀키트', '매콤 우삼겹떡볶이 밀키트', '캠핑용 스테이크 밀키트', '푸짐 부대찌개 밀키트', '감자탕 밀키트', '마라샹궈 밀키트'],
+  '채식/비건': ['식물성 대체육 비건버거', '정갈한 사찰음식 정식', '단짠 콩고기구이', '고기없는 비건만두', '담백 비건파스타', '야채만 채식카레', '신선발사믹 버섯샐러드', '고소한 두부스테이크', '단호박오븐구이']
 };
 
 const getListItems = (subCategory: string) => {
-   if (listData[subCategory]) return listData[subCategory];
-   return [`요리장 추천 ${subCategory}`, `매콤한 불향 ${subCategory}`, `치즈 듬뿍 ${subCategory}`, `가성비 갑 ${subCategory}`, `특제 소스 ${subCategory}`, `단짠단짠 ${subCategory}`, `곱빼기 ${subCategory}`];
+   // 세부 카테고리명을 키로 사용하여 정확한 리스트를 리턴
+   if (menusBySubCategory[subCategory]) {
+       return menusBySubCategory[subCategory];
+   }
+   return [`강력추천 ${subCategory}`, `매콤달달 ${subCategory}`, `단골들이 찾는 ${subCategory}`, `요즘 핫한 ${subCategory}`];
 };
 
 const rootStyles: Record<string, { bg: string, textObj: string, textShadow: string, font: string, img: string }> = {
-  '한식': { bg: 'bg-[#FF9800]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#D32F2F]', font: 'font-["Black_Han_Sans"]', img: '/images/korean_food.png' },
-  '중식': { bg: 'bg-[#D32F2F]', textObj: 'text-[#FFEB3B]', textShadow: 'drop-shadow-[3px_3px_0px_#000]', font: 'font-["Black_Han_Sans"]', img: '/images/chinese_food.png' },
-  '일식': { bg: 'bg-[#03A9F4]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#1A237E]', font: 'font-["Black_Han_Sans"]', img: '/images/japanese_food.png' },
-  '양식': { bg: 'bg-[#4CAF50]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#1B5E20]', font: 'font-["Black_Han_Sans"]', img: '/images/western_food.png' },
-  '분식': { bg: 'bg-[#F48FB1]', textObj: 'text-[#D32F2F]', textShadow: 'drop-shadow-[2px_2px_0px_#FFF]', font: 'font-["Black_Han_Sans"]', img: '/images/snack_food.png' },
-  '야식': { bg: 'bg-[#9C27B0]', textObj: 'text-[#FFEB3B]', textShadow: 'drop-shadow-[3px_3px_0px_#000]', font: 'font-["Black_Han_Sans"]', img: '/images/midnight_snack.png' },
-  '디저트': { bg: 'bg-[#00BCD4]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#E91E63]', font: 'font-["Black_Han_Sans"] tracking-widest', img: '/images/dessert_food.png' },
-  '기타': { bg: 'bg-[#FFC107]', textObj: 'text-[#000]', textShadow: 'drop-shadow-[2px_2px_0px_#FFF]', font: 'font-["Black_Han_Sans"]', img: '/images/other_food.png' },
+  '한식': { bg: 'bg-[#FF9800]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#D32F2F]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/korean.png' },
+  '중식': { bg: 'bg-[#D32F2F]', textObj: 'text-[#FFEB3B]', textShadow: 'drop-shadow-[3px_3px_0px_#000]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/chinese.png' },
+  '일식': { bg: 'bg-[#03A9F4]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#1A237E]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/japanese.png' },
+  '양식': { bg: 'bg-[#4CAF50]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#1B5E20]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/western.png' },
+  '분식/야식': { bg: 'bg-[#F48FB1]', textObj: 'text-[#D32F2F]', textShadow: 'drop-shadow-[2px_2px_0px_#FFF]', font: 'font-["Black_Han_Sans"] text-sm sm:text-lg', img: '/images/category1/snack.png' },
+  '패스트푸드': { bg: 'bg-[#9C27B0]', textObj: 'text-[#FFEB3B]', textShadow: 'drop-shadow-[3px_3px_0px_#000]', font: 'font-["Black_Han_Sans"] text-sm sm:text-lg', img: '/images/category1/fastfood.png' },
+  '디저트': { bg: 'bg-[#00BCD4]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#E91E63]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/dessert.png' },
+  '기타': { bg: 'bg-[#FFC107]', textObj: 'text-[#000]', textShadow: 'drop-shadow-[2px_2px_0px_#FFF]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/other.png' },
 };
 
 const CheckerOverlay = () => (
@@ -68,10 +145,11 @@ export default function Home() {
 
   const handleRandomPick = () => {
      let flatLists: string[] = [];
-     if (layer === 'root') flatLists = Object.values(listData).flat();
-     else {
+     if (layer === 'root') {
+        flatLists = Object.values(menusBySubCategory).flat();
+     } else {
         const currentSubCats = subCategories[layer] || [];
-        flatLists = currentSubCats.filter(sub => sub !== '뒤로가기').flatMap(sub => getListItems(sub));
+        flatLists = currentSubCats.filter(sub => sub !== '뒤로가기').flatMap(sub => menusBySubCategory[sub] || []);
      }
      if (flatLists.length > 0) {
         const randomItem = flatLists[Math.floor(Math.random() * flatLists.length)];
@@ -119,16 +197,15 @@ export default function Home() {
             {currentGridIndex.map((itemName, index) => {
               const isCenter = index === 4;
               const isRoot = layer === 'root';
-              const s = rootStyles[itemName];
-              let containerClass = "bg-white border-[3px] sm:border-4 border-[#111827] shadow-[4px_4px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] overflow-hidden relative transition-all";
-              let textWrapper = "absolute bottom-1 sm:bottom-3 w-full text-center z-20 px-1";
-              let typography = "text-xs sm:text-2xl font-['Black_Han_Sans'] text-[#111827] bg-white px-1 sm:px-3 py-1 border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#E23B2A] -rotate-3 transform inline-block";
+              const s = rootStyles[itemName] || rootStyles[layer] || { bg: 'bg-[#FFF]', font: 'font-["Black_Han_Sans"] text-sm sm:text-lg', img: '' };
+              const category2ImgIndex = index > 4 ? index : index + 1; // 1~8 스킵 처리
+              const imgToUse = isRoot ? s.img : `/images/category2/${layer}_${category2ImgIndex}.png`;
 
-              if (isRoot && !isCenter && s) {
-                  containerClass = `${s.bg} border-[3px] sm:border-4 border-[#111827] shadow-[5px_5px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] overflow-hidden relative`;
-                  textWrapper = "absolute top-1 sm:top-3 w-full text-center z-20 px-1";
-                  typography = `text-[13px] sm:text-2xl ${s.font} text-[#111827] px-1 sm:px-3 py-1 bg-white border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#E23B2A] -rotate-3 transform inline-block`;
-              } else if (isCenter) {
+              let containerClass = `${s.bg} border-[3px] sm:border-4 border-[#111827] shadow-[4px_4px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] overflow-hidden relative transition-all`;
+              let textWrapper = "absolute top-1 sm:top-2 w-full text-center z-20 px-1";
+              let typography = `text-[11px] sm:text-xl ${isRoot ? s.font : 'font-["Black_Han_Sans"]'} text-[#111827] bg-white px-1 sm:px-2 py-0.5 border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#E23B2A] -rotate-3 inline-block leading-tight break-keep`;
+
+              if (isCenter) {
                   containerClass = isRoot ? "bg-[#E23B2A] border-[4px] border-[#111827] shadow-[5px_5px_0px_#111827]" : "bg-white border-[4px] border-[#111827] shadow-[5px_5px_0px_#111827]";
                   typography = isRoot ? "text-xl sm:text-5xl font-['Black_Han_Sans'] text-white drop-shadow-[2px_2px_0px_#111827]" : "text-base sm:text-3xl font-['Black_Han_Sans'] text-[#E23B2A] drop-shadow-[2px_2px_0px_#111827]";
                   textWrapper = "flex items-center justify-center w-full h-full";
@@ -136,17 +213,18 @@ export default function Home() {
 
               let displayLabel = itemName;
               if (!isRoot && isCenter) displayLabel = '← 뒤로';
+              if (displayLabel === '오늘 뭐 먹지?') displayLabel = '아무거나';
 
               return (
                 <motion.button key={itemName + index} onClick={() => {
-                  if (isRoot) { if (isCenter) return; changeLayer(itemName, 1); }
+                  if (isRoot) { if (isCenter) { handleRandomPick(); return; } changeLayer(itemName, 1); }
                   else { if (isCenter) changeLayer('root', -1); else { setDirection(1); setSubLayer(itemName); } }
                 }} className={`group rounded-xl sm:rounded-[2rem] focus:outline-none ${containerClass}`}>
-                  {isRoot && !isCenter && <CheckerOverlay />}
-                  {isRoot && !isCenter && s && (
-                     <div className="absolute inset-0 flex items-center justify-center z-10 transition-transform group-hover:scale-105 pointer-events-none mt-2 sm:mt-6">
+                  {!isCenter && <CheckerOverlay />}
+                  {!isCenter && (
+                     <div className="absolute inset-0 flex items-center justify-center z-10 transition-transform group-hover:scale-105 pointer-events-none mt-4 sm:mt-6">
                         <div className="w-[85%] h-[85%] bg-white rounded-full border-[3px] border-[#111827] shadow-[4px_4px_0px_rgba(0,0,0,0.3)] flex items-center justify-center overflow-hidden">
-                           <img src={s.img} alt={itemName} className="object-cover w-[110%] h-[110%] block" />
+                           <img src={imgToUse} alt={itemName} onError={(e) => { e.currentTarget.src = '/images/placeholder.png' }} className="object-cover w-[110%] h-[110%] block" />
                         </div>
                      </div>
                   )}
