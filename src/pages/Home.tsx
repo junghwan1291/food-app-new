@@ -221,7 +221,7 @@ export default function Home() {
         <div className="text-center mb-6 relative z-10 w-full mt-4 sm:mt-10">
             <h1 className="text-[2.5rem] sm:text-6xl font-['Black_Han_Sans'] text-[#E23B2A] mb-4 drop-shadow-[2px_2px_0px_#111827] rotate-[-2deg] uppercase">{layer === 'root' ? '오늘 뭐 먹지?' : layer}</h1>
             <div className="flex flex-col sm:flex-row gap-3 items-center justify-center mt-4 w-full px-2 max-w-[650px] mx-auto">
-                <button onClick={handleRandomPick} className="flex-1 w-full py-4 bg-[#CCFF00] border-4 border-[#111827] rounded-[1.5rem] shadow-[4px_4px_0px_#111827] text-[#111827] font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] -rotate-[2deg]">🎲 {layer === 'root' ? '아무거나' : `${layer} 다 좋아요`}</button>
+                <button onClick={handleRandomPick} className="flex-1 w-full py-4 bg-[#CCFF00] border-4 border-[#111827] rounded-[1.5rem] shadow-[4px_4px_0px_#111827] text-[#111827] font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] -rotate-[2deg]">🎲 {layer === 'root' ? '진짜 아무거나' : `${layer} 다 좋아요`}</button>
                 <button onClick={() => window.open('https://link.coupang.com/a/ee5GOI', '_blank')} className="flex-1 w-full py-4 bg-[#FF0080] border-4 border-[#111827] rounded-[1.5rem] shadow-[4px_4px_0px_#111827] text-white font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] rotate-[1deg]">🚀 로켓 주문</button>
             </div>
         </div>
