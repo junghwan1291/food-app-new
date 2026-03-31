@@ -23,8 +23,8 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
     id: '돼지김치찌개',
     imageUrl: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&q=80',
     restaurants: [
-      { name: '대독장 김치찌개전문점', rating: '⭐⭐⭐⭐⭐ 4.9', location: '서울 강남구 역삼동' },
-      { name: '김치찌개 맛있는집', rating: '⭐⭐⭐⭐ 4.5', location: '서울 서초구 방배동' }
+      { name: '김진목삼 2호점', rating: '⭐⭐⭐⭐⭐ 4.7', location: '서울 서촌' },
+      { name: '부산댁 광안점', rating: '⭐⭐⭐⭐ 4.0', location: '부산 광안리' }
     ],
     mealKits: [
       { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
