@@ -20,11 +20,11 @@ const subCategories: Record<string, string[]> = {
 
 const menusBySubCategory: Record<string, string[]> = {
   // 한식
-  '찌개/전골': ['돼지김치찌개', '참치김치찌개', '스팸김치찌개', '차돌된장찌개', '우렁된장찌개', '해물된장찌개', '부대찌개', '순두부찌개', '청국장', '동태찌개', '소곱창전골', '버섯불고기전골', '밀푀유나베', '만두전골', '감자탕'],
-  '국밥/탕': ['순대국밥', '수육국밥', '부산돼지국밥', '밀양돼지국밥', '뼈해장국', '양평해장국', '선지해장국', '설렁탕', '나주곰탕', '꼬리곰탕', '왕갈비탕', '소머리국밥', '콩나물국밥', '황태해장국', '추어탕', '삼계탕', '육개장'],
-  '구이/볶음': ['매콤제육볶음', '오징어볶음', '낙지볶음', '쭈꾸미볶음', '뚝배기불고기', '바싹불고기', '돼지양념갈비', '삼겹살구이', '목살소금구이', '차돌박이구이', '더덕구이', '황태구이', '오리주물럭', '닭갈비'],
-  '찜/조림': ['돼지갈비찜', '소갈비찜', '매운소갈비찜', '묵은지등갈비찜', '안동찜닭', '매콤닭볶음탕', '고등어무조림', '갈치조림', '코다리조림', '두부조림', '감자조림', '우엉조림'],
-  '생선/해물': ['고등어구이', '가자미구이', '삼치구이', '조기구이', '매콤해물찜', '아구찜', '알찜', '대구뽈찜', '꽃게탕', '연포탕', '오징어숙회', '왕새우소금구이', '해물파전', '꼬막무침'],
+  '찌개/전골': ['돼지김치찌개', '차돌된장찌개', '우렁된장찌개', '부대찌개', '순두부찌개', '청국장', '동태찌개', '소곱창전골', '버섯불고기전골', '만두전골'],
+  '국밥/탕': ['순대국밥', '수육국밥', '돼지국밥', '뼈해장국', '양평해장국', '선지해장국', '설렁탕', '나주곰탕', '꼬리곰탕', '왕갈비탕', '콩나물국밥', '황태해장국', '추어탕', '삼계탕', '육개장', '감자탕'],
+  '구이/볶음': ['제육볶음', '닭갈비', '오징어볶음', '낙지볶음', '쭈꾸미볶음', '뚝배기불고기', '돼지양념갈비', '삼겹살구이', '차돌박이구이', '더덕구이', '황태구이', '오리주물럭'],
+  '찜/조림': ['돼지갈비찜', '소갈비찜', '매운소갈비찜', '묵은지등갈비찜', '안동찜닭', '닭볶음탕'],
+  '생선/해물': ['고등어구이', '가자미구이', '삼치구이', '조기구이', '매콤해물찜', '아구찜', '알찜', '대구뽈찜', '꽃게탕', '연포탕', '오징어숙회', '왕새우소금구이', '해물파전', '꼬막무침', '고등어무조림', '갈치조림', '코다리조림'],
   '비빔밥/죽': ['전주비빔밥', '돌솥비빔밥', '육회비빔밥', '꼬막비빔밥', '낙지비빔밥', '산채비빔밥', '참치마요비빔밥', '전복죽', '야채죽', '소고기버섯죽', '단호박죽', '동지팥죽', '낙지김치죽', '흑임자죽'],
   '국수/냉면': ['살얼음물냉면', '매콤비빔냉면', '코다리회냉면', '평양냉면', '뜨끈한 잔치국수', '새콤비빔국수', '바지락칼국수', '얼큰칼국수', '닭칼국수', '들깨수제비', '춘천막국수', '고기국수', '여름콩국수', '열무국수'],
   '기타 한식/도시락': ['한정식 코스', '11찬 정식', '떡갈비정식', '보리밥정식', '쌈밥정식', '우렁쌈밥', '수제 편의점도시락', '제육도시락', '돈까스도시락', '충무김밥', '연잎밥', '구절판', '신선로'],
@@ -163,10 +163,9 @@ export default function Home() {
         <div className="w-full max-w-xl animate-fade-in flex flex-col h-full">
             <h1 className="text-4xl sm:text-5xl font-['Black_Han_Sans'] text-[#E23B2A] mb-8 drop-shadow-[2px_2px_0px_#111827] text-center -rotate-2 uppercase">{subLayer} 리스트!</h1>
             <button onClick={() => { setDirection(-1); setSubLayer(null); }} className="w-full bg-[#111827] border-4 border-[#111827] text-white py-4 rounded-xl flex items-center justify-center gap-3 font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] mb-4">카테고리 다시 고르기</button>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-               <button onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(subLayer)}`, '_blank')} className="bg-[#ccfff5] border-[3px] border-[#111827] rounded-xl py-3 font-['Black_Han_Sans'] text-lg text-[#111827] shadow-[3px_3px_0px_#111827] hover:translate-x-[1px] hover:translate-y-[1px]">🍽️ 유명 식당</button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+               <button onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(subLayer)}`, '_blank')} className="bg-[#ccfff5] border-[3px] border-[#111827] rounded-xl py-3 font-['Black_Han_Sans'] text-lg text-[#111827] shadow-[3px_3px_0px_#111827] hover:translate-x-[1px] hover:translate-y-[1px]">🍽️ 근처 식당 찾기</button>
                <button onClick={() => navigate('/market')} className="bg-[#FFF9C4] border-[3px] border-[#111827] rounded-xl py-3 font-['Black_Han_Sans'] text-lg text-[#E23B2A] shadow-[3px_3px_0px_#111827] hover:translate-x-[1px] hover:translate-y-[1px]">🛒 밀키트 주문</button>
-               <button onClick={() => alert('레시피 연동 준비 중!')} className="bg-[#FF0080] border-[3px] border-[#111827] rounded-xl py-3 font-['Black_Han_Sans'] text-lg text-white shadow-[3px_3px_0px_#111827] hover:translate-x-[1px] hover:translate-y-[1px]">🍳 레시피 이동</button>
             </div>
             <div className="flex flex-col gap-4">
               {getListItems(subLayer).map((item, idx) => (

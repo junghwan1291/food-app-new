@@ -21,7 +21,7 @@ export interface FoodDetail {
 export const FOOD_DETAILS: Record<string, FoodDetail> = {
   '돼지김치찌개': {
     id: '돼지김치찌개',
-    imageUrl: '/images/foods/pork_kimchi_jjigae.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&q=80',
     restaurants: [
       { name: '대독장 김치찌개전문점', rating: '⭐⭐⭐⭐⭐ 4.9', location: '서울 강남구 역삼동' },
       { name: '김치찌개 맛있는집', rating: '⭐⭐⭐⭐ 4.5', location: '서울 서초구 방배동' }
@@ -31,12 +31,12 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 앞다리살 300g', '잘 익은 김치 1/4포기', '대파 1대', '청양고추 2개', '두부 반 모', '고춧가루 2큰술', '다진마늘 1큰술'],
+    ingredients: ['돼지고기', '신김치', '두부', '대파', '양파', '고춧가루', '다진마늘'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_pork'
   },
   '전주비빔밥': {
     id: '전주비빔밥',
-    imageUrl: '/images/foods/jeonju_bibimbap.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&q=80',
     restaurants: [
       { name: '전주비빔밥 본점', rating: '⭐⭐⭐⭐⭐ 5.0', location: '전북 전주시 완산구' },
       { name: '비빔밥 정원', rating: '⭐⭐⭐⭐ 4.2', location: '서울 중구 을지로' }
@@ -46,14 +46,14 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['불고기용 소고기 100g', '콩나물, 시금치, 고사리 각 50g', '달걀 1개', '고추장 소스', '참기름 1큰술'],
+    ingredients: ['밥', '소고기', '콩나물', '애호박', '당근', '고사리', '달걀', '고추장', '참기름'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_bibimbap'
   }
 };
 
 export const DEFAULT_FOOD_DETAIL = (name: string): FoodDetail => ({
   id: name,
-  imageUrl: '/images/foods/pork_kimchi_jjigae.jpg', // 기본값으로 김치찌개 사진 활용
+  imageUrl: 'https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&q=80', // 기본값으로 고퀄리티 한식 상차림 사진 활용
   restaurants: [
     { name: `근처 ${name} 맛집 1번`, rating: '⭐⭐⭐⭐ 4.5', location: '현재 위치 주변' },
     { name: `주변 ${name} 소문난곳`, rating: '⭐⭐⭐⭐⭐ 4.8', location: '현재 위치 주변' }
@@ -63,6 +63,6 @@ export const DEFAULT_FOOD_DETAIL = (name: string): FoodDetail => ({
     { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
     { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
   ],
-  ingredients: [`${name}용 주재료`, '양념장 및 기본 채소', '다진 마늘/파', '참기름/깨'],
+  ingredients: [`${name} 주재료`, '각종 채소', '양념장', '다진 마늘', '대파'],
   mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
 });

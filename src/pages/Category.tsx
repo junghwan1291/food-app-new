@@ -46,12 +46,19 @@ export default function Category() {
       {/* 2. 상세 콘텐츠 영역 */}
       <main className="max-w-4xl mx-auto px-4 mt-12 space-y-12">
          
-         {/* 섹션 1: 🍽️ 내 근처 유명한 식당 */}
+         {/* 섹션 1: 🍽️ 요즘 핫한 식당 */}
          <section className="animate-fade-in delay-100">
+            <button 
+               onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(detail.id)}`, '_blank')}
+               className="w-full mb-8 bg-[#111827] text-white py-4 rounded-2xl font-['Black_Han_Sans'] text-xl shadow-[4px_4px_0px_#E23B2A] hover:bg-gray-800 transition-colors"
+            >
+               네이버 지도로 주변 식당 찾기
+            </button>
+
             <div className="flex items-center gap-3 mb-6">
-               <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827]">🍽️ 내 근처 유명한 식당</h2>
+               <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827]">🍽️ 요즘 핫한 식당</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                {detail.restaurants.map((res, idx) => (
                   <a 
@@ -71,12 +78,6 @@ export default function Category() {
                ))}
             </div>
 
-            <button 
-               onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(detail.id)}`, '_blank')}
-               className="w-full mt-6 bg-[#111827] text-white py-4 rounded-2xl font-['Black_Han_Sans'] text-xl shadow-[4px_4px_0px_#E23B2A] hover:bg-gray-800 transition-colors"
-            >
-               지도로 전체보기 →
-            </button>
          </section>
 
          {/* 섹션 2: 🛒 밀키트 주문 */}
