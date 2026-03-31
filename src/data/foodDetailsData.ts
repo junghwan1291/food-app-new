@@ -48,6 +48,21 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
     ],
     ingredients: ['밥', '소고기', '콩나물', '애호박', '당근', '고사리', '달걀', '고추장', '참기름'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_bibimbap'
+  },
+  '우렁된장찌개': {
+    id: '우렁된장찌개',
+    imageUrl: 'https://images.unsplash.com/photo-1547928576-a4a33237bec3?auto=format&fit=crop&q=80',
+    restaurants: [
+      { name: '민스키친 연희점', rating: '⭐⭐⭐⭐⭐ 4.7', location: '서울 연희' },
+      { name: '고원집', rating: '⭐⭐⭐⭐⭐ 4.7', location: '충북 청주' }
+    ],
+    mealKits: [
+      { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+      { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+      { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
+    ],
+    ingredients: ['우렁이', '된장', '애호박', '무', '두부', '청양고추', '다진마늘'],
+    mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   }
 };
 
