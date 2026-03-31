@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { MEAL_KITS, HOT_SPOTS } from '../data/partnersData';
+import { MEAL_KITS, HOT_SPOTS, LANDING_MEAL_KITS } from '../data/partnersData';
+import { FOOD_DETAILS, DEFAULT_FOOD_DETAIL } from '../data/foodDetailsData';
 
 // --- 데이터베이스 ---
 
@@ -108,6 +109,28 @@ const getListItems = (subCategory: string) => {
    return [`강력추천 ${subCategory}`, `매콤달달 ${subCategory}`, `단골들이 찾는 ${subCategory}`, `요즘 핫한 ${subCategory}`];
 };
 
+const getShuffledMealKits = (category: string) => {
+  const categorySubs = subCategories[category] || [];
+  let allMenuNames: string[] = [];
+  categorySubs.forEach(sub => {
+    if (menusBySubCategory[sub]) {
+      allMenuNames = [...allMenuNames, ...menusBySubCategory[sub]];
+    }
+  });
+
+  if (allMenuNames.length === 0) return MEAL_KITS['root'].slice(0, 4);
+
+  // 무작위로 섞고 상위 4개 선택
+  const shuffled = [...allMenuNames].sort(() => 0.5 - Math.random());
+  const selectedMenus = shuffled.slice(0, 4);
+
+  return selectedMenus.map((menuName, idx) => {
+    const detail = FOOD_DETAILS[menuName] || DEFAULT_FOOD_DETAIL(menuName);
+    // 각 메뉴의 첫 번째 밀키트를 가져옴 (없으면 root의 기본값 활용)
+    return detail.mealKits[0] || { ...MEAL_KITS['root'][0], id: 999 + idx };
+  });
+};
+
 const rootStyles: Record<string, { bg: string, textObj: string, textShadow: string, font: string, img: string }> = {
   '한식': { bg: 'bg-[#FF9800]', textObj: 'text-[#FFF]', textShadow: 'drop-shadow-[3px_3px_0px_#D32F2F]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/korean.png' },
   '중식': { bg: 'bg-[#D32F2F]', textObj: 'text-[#FFEB3B]', textShadow: 'drop-shadow-[3px_3px_0px_#000]', font: 'font-["Black_Han_Sans"]', img: '/images/category1/chinese.png' },
@@ -140,6 +163,18 @@ export default function Home() {
     setDirection(dir);
     setLayer(newLayer);
   };
+
+  const randomizedMealKits = useMemo(() => {
+    if (layer === 'root') {
+      return [
+        LANDING_MEAL_KITS.hotKorean,
+        LANDING_MEAL_KITS.asian,
+        LANDING_MEAL_KITS.western,
+        LANDING_MEAL_KITS.general
+      ];
+    }
+    return getShuffledMealKits(layer);
+  }, [layer]);
 
   const currentGridIndex = layer === 'root' ? rootCategories : subCategories[layer];
 
@@ -187,7 +222,7 @@ export default function Home() {
             <h1 className="text-[2.5rem] sm:text-6xl font-['Black_Han_Sans'] text-[#E23B2A] mb-4 drop-shadow-[2px_2px_0px_#111827] rotate-[-2deg] uppercase">{layer === 'root' ? '오늘 뭐 먹지?' : layer}</h1>
             <div className="flex flex-col sm:flex-row gap-3 items-center justify-center mt-4 w-full px-2 max-w-[650px] mx-auto">
                 <button onClick={handleRandomPick} className="flex-1 w-full py-4 bg-[#CCFF00] border-4 border-[#111827] rounded-[1.5rem] shadow-[4px_4px_0px_#111827] text-[#111827] font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] -rotate-[2deg]">🎲 {layer === 'root' ? '아무거나' : `${layer} 다 좋아요`}</button>
-                <button onClick={() => navigate('/market')} className="flex-1 w-full py-4 bg-[#FF0080] border-4 border-[#111827] rounded-[1.5rem] shadow-[4px_4px_0px_#111827] text-white font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] rotate-[1deg]">🛒 로켓 장 보기</button>
+                <button onClick={() => window.open('https://link.coupang.com/a/ee5GOI', '_blank')} className="flex-1 w-full py-4 bg-[#FF0080] border-4 border-[#111827] rounded-[1.5rem] shadow-[4px_4px_0px_#111827] text-white font-['Black_Han_Sans'] text-xl hover:translate-x-[2px] hover:translate-y-[2px] rotate-[1deg]">🚀 로켓 주문</button>
             </div>
         </div>
 
@@ -243,18 +278,15 @@ export default function Home() {
                   </div>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 pb-2 place-items-center">
-                    {(() => {
-                        const currentData = MEAL_KITS[layer] || MEAL_KITS['root'] || [];
-                        const displayItems = currentData.slice(0, 4);
-                        return displayItems.map((item, idx) => (
-                         <div key={item.id} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[285px] sm:h-[295px]">
+                    {randomizedMealKits.map((item, idx) => (
+                         <div key={`${item.id}-${idx}`} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[285px] sm:h-[295px]">
                               {layer === 'root' && idx === 0 && <div className="absolute -top-4 -left-2 z-30 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
                               {layer === 'root' && idx === 1 && <div className="absolute -top-4 -left-2 z-30 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}
                               {layer === 'root' && idx === 2 && <div className="absolute -top-4 -left-2 z-30 bg-[#FF9800] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[5deg] whitespace-nowrap">🍝 양식</div>}
+                              {layer === 'root' && idx === 3 && <div className="absolute -top-4 -left-2 z-30 bg-[#4CAF50] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] rotate-2 whitespace-nowrap">✨ 추천 품목</div>}
                               {item.html && <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl bg-white" dangerouslySetInnerHTML={{ __html: item.html }} />}
                          </div>
-                        ));
-                    })()}
+                    ))}
                   </div>
                 </section>
 

@@ -50,7 +50,7 @@ export default function Category() {
          <section className="animate-fade-in delay-100">
             <button 
                onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(detail.id)}`, '_blank')}
-               className="w-full mb-8 bg-[#111827] text-white py-4 rounded-2xl font-['Black_Han_Sans'] text-xl shadow-[4px_4px_0px_#E23B2A] hover:bg-gray-800 transition-colors"
+               className="w-full mb-10 bg-[#111827] text-white py-6 rounded-[1.5rem] sm:rounded-[2rem] font-['Black_Han_Sans'] text-2xl sm:text-4xl shadow-[6px_6px_0px_#E23B2A] hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
             >
                네이버 지도로 주변 식당 찾기
             </button>
@@ -83,12 +83,18 @@ export default function Category() {
          {/* 섹션 2: 🛒 밀키트 주문 */}
          <section className="bg-[#ccfff5] border-[4px] border-[#111827] rounded-[2.5rem] p-6 sm:p-10 shadow-[8px_8px_0px_#111827]">
             <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827] mb-8 text-center">🛒 집에서 즐기는 밀키트</h2>
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-6 place-items-center">
-               {detail.mealKits.map((item) => (
-                  <div key={item.id} className="bg-white border-[3px] border-[#111827] rounded-2xl px-1 w-full max-w-[170px] flex items-center justify-center shadow-[4px_4px_0px_#111827] overflow-hidden h-[285px] sm:h-[295px]">
-                     <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl" dangerouslySetInnerHTML={{ __html: item.html }} />
+            <div className="flex flex-col items-center gap-6">
+               {detail.mealKits.length > 0 && (
+                  <div className="bg-white border-[3px] border-[#111827] rounded-2xl px-1 w-full max-w-[170px] flex items-center justify-center shadow-[4px_4px_0px_#111827] overflow-hidden h-[285px] sm:h-[295px]">
+                     <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl" dangerouslySetInnerHTML={{ __html: detail.mealKits[0].html }} />
                   </div>
-               ))}
+               )}
+               <button 
+                  onClick={() => navigate('/market')}
+                  className="w-full max-w-xs bg-[#E23B2A] text-white border-[3px] border-[#111827] py-4 rounded-xl font-['Black_Han_Sans'] text-xl shadow-[4px_4px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+               >
+                  🛒 쿠팡에서 주문하기
+               </button>
             </div>
          </section>
 
