@@ -63,7 +63,7 @@ export default function Category() {
                {detail.restaurants.map((res, idx) => (
                   <a 
                     key={idx}
-                    href={`https://map.naver.com/v5/search/${encodeURIComponent(detail.id + ' ' + res.name)}`}
+                    href={`https://map.naver.com/v5/search/${encodeURIComponent(res.name)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white border-[4px] border-[#111827] p-5 sm:p-6 rounded-[2rem] shadow-[6px_6px_0px_#111827] hover:scale-[1.02] transition-transform flex flex-col items-start"
