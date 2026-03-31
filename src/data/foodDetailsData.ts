@@ -63,6 +63,21 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
     ],
     ingredients: ['우렁이', '된장', '애호박', '무', '두부', '청양고추', '다진마늘'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
+  },
+  '부대찌개': {
+    id: '부대찌개',
+    imageUrl: 'https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&q=80',
+    restaurants: [
+      { name: '이나경송탄부대찌개', rating: '⭐⭐⭐⭐ 4.3', location: '경기 수원' },
+      { name: '돈오리', rating: '⭐⭐⭐⭐ 4.3', location: '서울 용산' }
+    ],
+    mealKits: [
+      { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+      { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
+      { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
+    ],
+    ingredients: ['햄', '소시지', '김치', '라면사리', '치즈', '고춧가루', '대파'],
+    mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   }
 };
 
