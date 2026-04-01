@@ -92,7 +92,7 @@ export default function Category() {
          <div className="grid grid-cols-2 gap-3 sm:gap-6 w-full max-w-4xl mx-auto items-stretch">
             {/* 왼쪽: 밀키트 */}
             <section className="bg-[#ccfff5] border-[3px] sm:border-[4px] border-[#111827] rounded-[1.5rem] sm:rounded-[2rem] p-3 sm:p-8 shadow-[4px_4px_0px_#111827] sm:shadow-[6px_6px_0px_#111827] flex flex-col items-center">
-               <h2 className="text-[13px] sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-3 sm:mb-6 text-center break-keep leading-tight">
+               <h2 className="text-[15px] sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-3 sm:mb-6 text-center break-keep leading-tight">
                   <span className="block sm:hidden">🛒 밀키트 추천</span>
                   <span className="hidden sm:inline">🛒 집에서 즐기는 밀키트</span>
                </h2>
@@ -109,29 +109,38 @@ export default function Category() {
             <section className="w-full h-full">
                <div className="bg-[#FFF9C4] border-[3px] sm:border-[4px] border-[#111827] p-3 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] shadow-[4px_4px_0px_#111827] sm:shadow-[6px_6px_0px_#111827] h-full flex flex-col justify-between">
                   <div>
-                     <h2 className="text-[13px] sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-3 sm:mb-5 leading-tight break-keep text-center">
+                     <h2 className="text-[15px] sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-3 sm:mb-5 leading-tight break-keep text-center">
                         <span className="block sm:hidden">🍳 재료 리스트</span>
                         <span className="hidden sm:inline">🍳 레시피 재료 리스트</span>
                      </h2>
-                     <ul className="space-y-1.5 sm:space-y-3 mb-4 sm:mb-6">
-                        {detail.ingredients.map((ing, idx) => (
-                           <li key={idx} className="flex items-start sm:items-center gap-1.5 sm:gap-3 font-bold text-[#111827] text-[10px] sm:text-base leading-tight">
-                              <div className="w-2.5 h-2.5 sm:w-5 sm:h-5 border-[1.5px] sm:border-2 border-[#111827] rounded-sm sm:rounded bg-white flex items-center justify-center shrink-0 mt-[2px] sm:mt-0">
-                                 <div className="w-1.5 h-1.5 sm:w-3 sm:h-3 bg-[#E23B2A] rounded-[1px] sm:rounded-sm shadow-inner" />
-                              </div>
-                              <span className="break-keep">{ing}</span>
-                           </li>
-                        ))}
-                     </ul>
+                     <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+                        <ul className="space-y-2 sm:space-y-4 mb-4 sm:mb-6 overflow-y-auto max-h-[180px] sm:max-h-[300px] pr-2 scrollbar-thin scrollbar-thumb-[#111827] scrollbar-track-transparent">
+                           {detail.ingredients.map((ing, idx) => {
+                              const isMain = idx === 0;
+                              return (
+                                 <li key={idx} className={`flex items-center gap-2 sm:gap-4 font-bold text-[#111827] ${isMain ? 'text-[16px] sm:text-xl' : 'text-[14px] sm:text-lg'} leading-tight`}>
+                                    <div className={`w-4 h-4 sm:w-6 sm:h-6 border-[2px] sm:border-[3px] border-[#111827] rounded sm:rounded-md bg-white flex items-center justify-center shrink-0`}>
+                                       {isMain && (
+                                          <svg className="w-3 h-3 sm:w-4 sm:h-4 text-[#E23B2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="5">
+                                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                          </svg>
+                                       )}
+                                    </div>
+                                    <span className={`${isMain ? 'text-[#E23B2A] drop-shadow-sm' : ''} break-keep`}>{ing}</span>
+                                 </li>
+                              );
+                           })}
+                        </ul>
+                     </div>
                   </div>
                   <a 
                      href={detail.mainIngredientLink}
                      target="_blank"
                      rel="noopener noreferrer"
-                     className="w-full bg-[#FF9800] text-white border-[2px] sm:border-[3px] border-[#111827] py-2 sm:py-4 rounded-lg sm:rounded-xl font-['Black_Han_Sans'] text-[11px] sm:text-xl text-center shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-1 block break-keep"
+                     className="w-full bg-[#FF9800] text-white border-[2px] sm:border-[3px] border-[#111827] py-2.5 sm:py-4 rounded-lg sm:rounded-xl font-['Black_Han_Sans'] text-[15px] sm:text-xl text-center shadow-[2px_2px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-1 block break-keep"
                   >
-                     <span className="block sm:hidden">🥕 핵심재료 ➔</span>
-                     <span className="hidden sm:inline">🥕 핵심 재료 바로구매 ➔</span>
+                     <span className="block sm:hidden">🥕 핵심재료 구매 ➔</span>
+                     <span className="hidden sm:inline">🥕 핵심 재료 구매 ➔</span>
                   </a>
                </div>
             </section>

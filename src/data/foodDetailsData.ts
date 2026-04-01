@@ -32,7 +32,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지고기', '신김치', '두부', '대파', '양파', '고춧가루', '다진마늘'],
+    ingredients: ['돼지고기(앞다리살)', '신김치', '두부', '대파', '양파', '고춧가루', '다진마늘', '국간장', '멸치육수', '설탕'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_pork'
   },
   '된장찌개': {
@@ -47,7 +47,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['우렁이/차돌박이', '된장', '애호박', '무', '두부', '청양고추', '다진마늘'],
+    ingredients: ['재래식 된장', '우렁이/차돌박이', '애호박', '무', '두부', '청양고추', '다진마늘', '감자', '표고버섯', '멸치다시마팩'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -63,7 +63,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['순두부', '바지락', '달걀', '고추기름', '양파', '대파', '다진마늘'],
+    ingredients: ['순두부', '바지락', '달걀', '고추기름', '양파', '대파', '다진마늘', '국간장', '고춧가루', '참기름'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '청국장': {
@@ -78,7 +78,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['국산콩 청국장', '돼지목살', '신김치', '두부', '애호박', '청양고추', '대파'],
+    ingredients: ['국산콩 청국장', '돼지목살', '신김치', '두부', '애호박', '청양고추', '대파', '고춧가루', '다진마늘', '멸치육수'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '동태찌개': {
@@ -93,7 +93,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['동태', '무', '고춧가루', '대파', '미나리', '다진마늘', '쑥갓'],
+    ingredients: ['동태', '무', '고춧가루', '대파', '미나리', '다진마늘', '쑥갓', '콩나물', '청양고추', '멸치육수'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '소곱창전골': {
@@ -108,7 +108,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소곱창', '대창', '버섯', '배추', '대파', '고추장양념', '들깨가루'],
+    ingredients: ['소곱창', '소대창', '버섯', '배추', '대파', '고추장양념', '들깨가루', '깻잎', '당면', '사골육수'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '불고기': {
@@ -123,7 +123,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소고기', '표고버섯', '양파', '간장양념', '당면', '배추'],
+    ingredients: ['소고기(불고기용)', '표고버섯', '양파', '간장양념', '당면', '배추', '대파', '당근', '참기름', '다진마늘'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -138,7 +138,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['고등어/삼치/임연수', '천일염', '레몬', '와사비간장', '무갈음'],
+    ingredients: ['고등어/삼치/임연수', '천일염', '레몬', '와사비간장', '무갈음', '식용유', '간장'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '만두전골': {
@@ -153,7 +153,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['수제만두', '버섯', '배추', '청경채', '고기육수', '다진마늘', '칼국수사리'],
+    ingredients: ['수제만두', '버섯', '배추', '청경채', '고기육수', '다진마늘', '칼국수사리', '대파', '홍고추', '쑥갓'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '순대국밥': {
@@ -168,7 +168,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['순대', '돼지고기 머릿고기', '사골육수', '부추', '들깨가루', '새우젓', '다진양념'],
+    ingredients: ['순대', '돼지 머릿고기', '사골육수', '부추', '들깨가루', '새우젓', '다진양념', '대파', '청양고추', '소금/후추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -184,7 +184,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 수육', '돼지 사골육수', '부추', '대파', '새우젓', '다대기(양념장)', '소금'],
+    ingredients: ['돼지 수육', '돼지 사골육수', '부추', '대파', '새우젓', '다대기(양념장)', '소금', '마늘/양파', '후추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '뼈해장국': {
@@ -199,7 +199,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 등뼈', '우거지', '된장', '들깨가루', '대파', '고춧가루', '다진마늘'],
+    ingredients: ['돼지 등뼈', '우거지', '된장', '들깨가루', '대파', '고춧가루', '다진마늘', '생강', '청양고추', '사골육수'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -216,7 +216,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소고기 양지', '사골육수', '소면', '대파', '소금', '후추', '깍두기'],
+    ingredients: ['소고기 양지', '사골육수', '소면', '대파', '소금', '후추', '깍두기', '무', '생강', '마늘'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '나주곰탕': {
@@ -231,7 +231,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소고기 양지', '사태', '사골육수', '무', '대파', '계란지단', '후추'],
+    ingredients: ['소고기 양지', '사태', '고기육수', '무', '대파', '계란지단', '후추', '소금', '다진마늘'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '꼬리곰탕': {
@@ -246,7 +246,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소꼬리', '사골육수', '무', '대파', '통마늘', '생강', '후추'],
+    ingredients: ['소꼬리', '사골육수', '무', '대파', '통마늘', '생강', '후추', '소금', '인삼/대추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '왕갈비탕': {
@@ -261,7 +261,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소갈비', '사골육수', '무', '대파', '당면', '통마늘', '소금'],
+    ingredients: ['소갈비', '고기육수', '무', '대파', '당면', '통마늘', '소금', '인삼', '대추', '계란지단'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '콩나물국밥': {
@@ -276,7 +276,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['콩나물', '밥', '새우젓', '달걀', '대파', '청양고추', '참기름'],
+    ingredients: ['콩나물', '밥', '새우젓', '달걀', '대파', '청양고추', '참기름', '김가루', '오징어다리', '고춧가루'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '황태해장국': {
@@ -291,7 +291,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['황태포', '무', '달걀', '두부', '대파', '다진마늘', '참기름'],
+    ingredients: ['황태포', '무', '달걀', '두부', '대파', '다진마늘', '참기름', '새우젓', '콩나물', '소금/후추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '추어탕': {
@@ -306,7 +306,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['미꾸라지', '된장', '들깨가루', '우거지', '고춧가루', '대파', '다진마늘'],
+    ingredients: ['미꾸라지', '된장', '들깨가루', '우거지', '고춧가루', '대파', '다진마늘', '초피가루(산초)', '부추', '수제비사리'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '삼계탕': {
@@ -321,7 +321,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['닭 한 마리', '인삼', '찹쌀', '황기', '대추', '마늘', '생강'],
+    ingredients: ['영계 닭', '인삼', '찹쌀', '황기', '대추', '마늘', '생강', '밤', '은행', '소금/후추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '육개장': {
@@ -336,7 +336,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소고기 사태', '고사리', '토란대', '숙주', '대파', '고춧가루', '다진마늘'],
+    ingredients: ['소고기 양지/사태', '고사리', '토란대', '숙주', '대파', '고춧가루', '다진마늘', '고추기름', '국간장', '계란'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '감자탕': {
@@ -351,7 +351,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 등뼈', '감자', '우거지', '들깨가루', '고추기름', '청양고추', '대파'],
+    ingredients: ['돼지 등뼈', '감자', '우거지', '들깨가루', '고추기름', '청양고추', '대파', '깻잎', '수제비사리', '고춧가루'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '제육볶음': {
@@ -366,7 +366,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 앞다리살', '고추장', '고춧가루', '양파', '대파', '참기름', '다진마늘'],
+    ingredients: ['돼지 앞다리살', '고추장', '고춧가루', '양파', '대파', '참기름', '다진마늘', '설탕', '간장', '깨소금'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '닭갈비': {
@@ -381,7 +381,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['닭다리살', '고추장양념', '고구마', '양배추', '떡', '대파', '참기름'],
+    ingredients: ['닭다리살', '고추장양념', '고구마', '양배추', '떡볶이떡', '대파', '참기름', '깻잎', '다진마늘', '설탕'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '오징어볶음': {
@@ -396,7 +396,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['오징어', '고추장', '양파', '대파', '당근', '참기름', '다진마늘'],
+    ingredients: ['오징어', '고추장', '고춧가루', '양파', '대파', '당근', '참기름', '다진마늘', '설탕', '통깨'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '낙지볶음': {
@@ -411,7 +411,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['낙지', '고추장', '양파', '대파', '참기름', '청양고추', '다진마늘'],
+    ingredients: ['낙지', '고추장/고춧가루', '양파', '대파', '참기름', '청양고추', '다진마늘', '양배추', '설탕', '통깨'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '쭈꾸미볶음': {
@@ -426,7 +426,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['쭈꾸미', '고추장', '양파', '대파', '당면', '참기름', '청양고추'],
+    ingredients: ['쭈꾸미', '매운고추장양념', '양파', '대파', '당면', '참기름', '청양고추', '마늘', '콩나물', '설탕'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -442,7 +442,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['삼겹살', '쌈채소', '쌈장', '마늘', '파절임', '된장찌개', '공기밥'],
+    ingredients: ['삼겹살', '상추/깻잎', '쌈장', '마늘', '파절임', '된장찌개', '공기밥', '김치', '고추', '참기름/소금'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '돼지양념갈비': {
@@ -457,7 +457,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지갈비', '사과배즙 양념', '간장', '마늘', '생강', '참기름', '깨소금'],
+    ingredients: ['돼지갈비', '사과배즙 양념', '간장', '마늘', '생강', '참기름', '깨소금', '양파', '후추', '설탕'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '더덕구이': {
@@ -472,7 +472,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['더덕', '고추장양념', '참기름', '깨소금', '들기름', '간장', '설탕'],
+    ingredients: ['더덕', '고추장양념', '참기름', '깨소금', '들기름', '간장', '설탕', '대파', '마늘', '쪽파'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -488,7 +488,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['오리고기', '곁들임 채소', '들깨가루', '부추', '마늘', '쌈장'],
+    ingredients: ['오리고기', '곁들임 채소', '들깨가루', '부추', '마늘', '쌈장', '무쌈', '양파장아찌', '머스타드소스', '상추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '돼지갈비찜': {
@@ -503,7 +503,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 갈비', '감자', '당근', '양파', '간장소스', '생강', '마늘'],
+    ingredients: ['돼지 갈비', '감자', '당근', '양파', '간장소스', '생강', '마늘', '대파', '표고버섯', '청양고추'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '소갈비찜': {
@@ -518,7 +518,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['소 갈비', '밤', '대추', '당근', '표고버섯', '간장양념', '후추'],
+    ingredients: ['소 갈비', '밤', '대추', '당근', '표고버섯', '간장양념', '후추', '무', '마늘', '은행'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
 
@@ -534,7 +534,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['돼지 등갈비', '묵은지', '감자', '대파', '청양고추', '고추장', '마늘'],
+    ingredients: ['돼지 등갈비', '묵은지', '감자', '대파', '청양고추', '고춧가루/고추장', '마늘', '양파', '설탕', '들기름'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '안동찜닭': {
@@ -549,7 +549,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['닭고기', '당면', '감자', '당근', '간장양념', '마늘', '청양고추'],
+    ingredients: ['닭고기', '당면', '감자', '당근', '간장양념', '마늘', '청야고추(건고추)', '대파', '양파', '표고버섯'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '닭볶음탕': {
@@ -564,7 +564,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['닭고기', '감자', '당근', '양파', '고추장양념', '청양고추', '대파'],
+    ingredients: ['닭고기', '감자', '당근', '양파', '고추장양념', '청양고추', '대파', '마늘', '생강', '설탕'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '갈치조림': {
@@ -578,7 +578,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['갈치', '무', '감자', '고춧가루', '간장양념', '대파', '청양고추'],
+    ingredients: ['갈치', '무', '감자', '고춧가루', '간장양념', '대파', '청양고추', '양파', '다진마늘', '생강'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '코다리조림': {
@@ -592,7 +592,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['코다리', '무', '가래떡', '고추장양념', '다진마늘', '생강', '물엿'],
+    ingredients: ['코다리', '무', '가래떡', '고추장양념', '다진마늘', '생강', '물엿', '대파', '청양고추', '통깨'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '간장게장': {
@@ -606,7 +606,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['꽃게', '한약재 간장', '생강', '마늘', '고추', '양파', '레몬'],
+    ingredients: ['꽃게', '한약재 간장', '생강', '마늘', '청고추/홍고추', '양파', '레몬', '대파', '통후추', '감초'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '두부조림': {
@@ -620,7 +620,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 1, html: `<iframe src="https://coupa.ng/cl7sZM" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['두부', '간장양념', '고춧가루', '대파', '양파', '들기름', '다진마늘'],
+    ingredients: ['두부', '간장양념', '고춧가루', '대파', '양파', '들기름', '다진마늘', '설탕', '통깨', '참기름'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   },
   '부대찌개': {
@@ -635,7 +635,7 @@ export const FOOD_DETAILS: Record<string, FoodDetail> = {
       { id: 2, html: `<iframe src="https://coupa.ng/cl7tbS" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` },
       { id: 3, html: `<iframe src="https://coupa.ng/cl7s3M" width="150" height="260" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>` }
     ],
-    ingredients: ['햄', '소시지', '김치', '라면사리', '치즈', '고춧가루', '대파'],
+    ingredients: ['모듬 햄', '소시지', '김치', '라면사리', '치즈', '고춧가루/사골육수', '대파', '베이크드빈스', '다진소고기', '양파'],
     mainIngredientLink: 'https://link.coupang.com/a/sample_generic'
   }
 };
