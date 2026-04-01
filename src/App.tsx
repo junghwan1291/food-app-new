@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Category from './pages/Category';
 import Market from './pages/Market';
+import FloatingActions from './components/FloatingActions';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/category/:name" element={<Category />} />
             <Route path="/market" element={<Market />} />
           </Routes>
+          <FloatingActions />
         </main>
       </div>
     </BrowserRouter>

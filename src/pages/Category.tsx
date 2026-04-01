@@ -1,6 +1,9 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FOOD_DETAILS, DEFAULT_FOOD_DETAIL } from '../data/foodDetailsData';
+import DeliveryButtons from '../components/DeliveryButtons';
+import CurationSection from '../components/CurationSection';
+import ShinbakCookingSection from '../components/ShinbakCookingSection';
 
 export default function Category() {
   const { name } = useParams<{ name: string }>();
@@ -50,12 +53,14 @@ export default function Category() {
          <section className="animate-fade-in delay-100">
             <button 
                onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(detail.id)}`, '_blank')}
-               className="w-full mb-10 bg-[#111827] text-white py-6 rounded-[1.5rem] sm:rounded-[2rem] font-['Black_Han_Sans'] text-2xl sm:text-4xl shadow-[6px_6px_0px_#E23B2A] hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
+               className="w-full mb-4 bg-[#111827] text-white py-6 rounded-[1.5rem] sm:rounded-[2rem] font-['Black_Han_Sans'] text-2xl sm:text-4xl shadow-[6px_6px_0px_#E23B2A] hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
             >
                네이버 지도로 주변 식당 찾기
             </button>
 
-            <div className="flex items-center gap-3 mb-6">
+            <DeliveryButtons keyword={name || ''} />
+
+            <div className="flex items-center gap-3 mb-6 mt-6 sm:mt-10">
                <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827]">🍽️ 요즘 핫한 식당</h2>
             </div>
 
@@ -132,6 +137,10 @@ export default function Category() {
                </a>
             </div>
          </section>
+
+         <ShinbakCookingSection foodName={detail.id} youtubeShortsId={detail.youtubeShortsId} />
+
+         <CurationSection />
 
       </main>
     </div>
