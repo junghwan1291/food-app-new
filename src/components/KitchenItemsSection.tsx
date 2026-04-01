@@ -9,9 +9,9 @@ export default function KitchenItemsSection() {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 place-items-center">
         {KITCHEN_ITEMS.map((item) => (
-          <div key={item.id} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-[#F1E8D9] border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[285px] sm:h-[295px] overflow-hidden group">
+          <div key={item.id} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-[#F1E8D9] border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[210px] sm:h-[295px] overflow-hidden group">
               <div className="absolute top-0 w-full bg-[#00A6E0] text-white border-b-[3px] border-[#111827] text-center font-['Black_Han_Sans'] text-xs py-1 z-30 truncate px-2">{item.name}</div>
-              <div className="w-full h-full pt-6 flex items-center justify-center [&>iframe]:w-full [&>iframe]:h-full" dangerouslySetInnerHTML={{ __html: item.html }} />
+              <div className="w-full flex items-center justify-center [&>iframe]:w-full [&>iframe]:h-full scale-75 sm:scale-100 origin-top mt-4" dangerouslySetInnerHTML={{ __html: item.html }} />
               <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
           </div>
         ))}

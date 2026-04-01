@@ -90,8 +90,8 @@ export default function Category() {
             <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827] mb-8 text-center">🛒 집에서 즐기는 밀키트</h2>
             <div className="flex flex-col items-center gap-6">
                {detail.mealKits.length > 0 && (
-                  <div className="bg-white border-[3px] border-[#111827] rounded-2xl px-1 w-full max-w-[170px] flex items-center justify-center shadow-[4px_4px_0px_#111827] overflow-hidden h-[285px] sm:h-[295px]">
-                     <div className="w-full h-[260px] flex items-center justify-center overflow-hidden rounded-xl" dangerouslySetInnerHTML={{ __html: detail.mealKits[0].html }} />
+                  <div className="bg-white border-[3px] border-[#111827] rounded-2xl px-1 w-full max-w-[170px] flex items-center justify-center shadow-[4px_4px_0px_#111827] overflow-hidden h-[210px] sm:h-[295px]">
+                     <div className="w-full flex items-center justify-center rounded-xl scale-75 sm:scale-100 origin-top mt-4 sm:mt-0" dangerouslySetInnerHTML={{ __html: detail.mealKits[0].html }} />
                   </div>
                )}
                <button 
