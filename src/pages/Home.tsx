@@ -104,6 +104,50 @@ const menusBySubCategory: Record<string, string[]> = {
   '채식/비건': ['비건버거', '사찰음식', '콩고기구이', '비건만두', '비건파스타', '두부스테이크', '단호박구이'],
 };
 
+const FRANCHISE_BRANDS: Record<string, string[]> = {
+  // 패스트푸드 관련
+  '후라이드치킨': ['BBQ', 'BHC', '교촌', '처갓집', '페리카나'],
+  '순살치킨': ['푸라닭', '굽네', 'BHC', 'BBQ', '맘스터치'],
+  '양념치킨': ['처갓집', '페리카나', '맥시칸', 'BHC', '교촌'],
+  '뿌링클치킨': ['BHC(원조)', 'BBQ', '푸라닭'],
+  '로스트치킨': ['굽네치킨', '돈치킨', '오븐에빠진닭'],
+  '빅맥세트': ['맥도날드', '버거킹', '롯데리아', '맘스터치'],
+  '와퍼세트': ['버거킹', '맥도날드', '롯데리아', '맘스터치'],
+  '에그토스트': ['에그드랍', '이삭토스트', '석봉토스트'],
+  '핫도그': ['명랑핫도그', '프랭크핫도그', '뉴욕핫도그'],
+  '타코': ['타코벨', '갓잇', '도스마스'],
+  
+  // 디저트 관련
+  '아메리카노': ['스타벅스', '메가커피', '컴포즈', '이디야', '폴바셋'],
+  '카페라떼': ['폴바셋', '스타벅스', '커피빈', '투썸플레이스'],
+  '흑당버블티': ['공차', '팔공티', '타이거슈가'],
+  '딸기주스': ['쥬씨', '빽다방', '떼루와'],
+  '치즈케이크': ['투썸플레이스', '파리바게뜨', '뚜레쥬르', '도레도레'],
+  '소금빵': ['파리바게뜨', '성심당', '뚜레쥬르', '아우어베이커리'],
+  '크로플': ['와플대학', '79파운드야드', '새들러하우스'],
+  '인절미빙수': ['설빙', '밀탑', '도쿄빙수'],
+  '그릭요거트': ['요거트맨', '유오이', '요거트월드'],
+  '베이글': ['몽쥬', '런던베이글뮤지엄', '코끼리베이글']
+};
+
+const DEFAULT_FRANCHISE = ['맥도날드', '스타벅스', '파리바게뜨', 'BBQ', '버거킹'];
+
+const getFranchiseBrands = (menu: string) => {
+  if (FRANCHISE_BRANDS[menu]) return FRANCHISE_BRANDS[menu];
+  
+  // 키워드 매칭 (예: 치킨이 들어가는 메뉴)
+  if (menu.includes('치킨')) return ['BBQ', 'BHC', '교촌', '굽네', '노랑통닭'];
+  if (menu.includes('버거')) return ['맥도날드', '버거킹', '롯데리아', '맘스터치', '프랭크버거'];
+  if (menu.includes('커피') || menu.includes('라떼')) return ['스타벅스', '이디야', '메가커피', '컴포즈', '투썸'];
+  if (menu.includes('도그')) return ['명랑핫도그', '프랭크핫도그'];
+  if (menu.includes('케이크') || menu.includes('타르트')) return ['파리바게뜨', '뚜레쥬르', '투썸플레이스', '빌리엔젤'];
+  if (menu.includes('샌드위치') || menu.includes('토스트')) return ['써브웨이', '이삭토스트', '에그드랍', '퀴즈노스'];
+  if (menu.includes('빙수')) return ['설빙', '밀탑', '도쿄빙수'];
+  if (menu.includes('빵')) return ['파리바게뜨', '뚜레쥬르', '성심당', '삼송빵집'];
+  
+  return DEFAULT_FRANCHISE;
+};
+
 const getShuffledMealKits = (category: string) => {
   const categorySubs = subCategories[category] || [];
   let allMenuNames: string[] = [];
@@ -196,6 +240,8 @@ export default function Home() {
   };
 
   if (subLayer) {
+    const isSpecialCategory = layer === '패스트푸드' || layer === '디저트';
+
     return (
       <div className="min-h-screen flex flex-col items-center bg-[#F1E8D9] font-['Inter',_sans-serif] pb-20 pt-10 px-4 relative">
         <div className="w-full max-w-xl animate-fade-in flex flex-col h-full">
@@ -207,15 +253,51 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-4">
               {getListItems(subLayer).map((item, idx) => (
-                <button key={idx} onClick={() => navigate(`/category/${item}`)} className="group w-full bg-white border-4 border-[#111827] shadow-[4px_4px_0px_#111827] py-4 px-6 rounded-2xl flex items-center justify-between hover:translate-x-[2px] hover:translate-y-[2px]">
-                    <span className="font-['Black_Han_Sans'] text-[#111827] text-xl sm:text-3xl">{item}</span>
-                    <div className="w-8 h-8 rounded-full bg-[#E23B2A] border-2 border-[#111827] text-white flex items-center justify-center font-bold font-sans flex-shrink-0">➔</div>
+                <button 
+                  key={idx} 
+                  onClick={() => !isSpecialCategory && navigate(`/category/${item}`)} 
+                  className={`group w-full bg-white border-4 border-[#111827] shadow-[4px_4px_0px_#111827] py-4 px-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 ${!isSpecialCategory ? 'hover:translate-x-[2px] hover:translate-y-[2px]' : 'cursor-default'}`}
+                >
+                    <div className="flex items-center gap-3 w-full sm:w-auto">
+                       <span className="font-['Black_Han_Sans'] text-[#111827] text-xl sm:text-3xl break-keep text-left">{item}</span>
+                    </div>
+                    {isSpecialCategory ? (
+                       <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center sm:justify-end">
+                          {getFranchiseBrands(item).map((brand, bIdx) => (
+                             <span key={bIdx} className="bg-[#FFF9C4] border-2 border-[#111827] rounded-lg px-2 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-sm font-bold text-[#111827] shadow-[2px_2px_0px_#111827]">
+                                {brand}
+                             </span>
+                          ))}
+                       </div>
+                    ) : (
+                       <div className="w-8 h-8 rounded-full bg-[#E23B2A] border-2 border-[#111827] text-white flex items-center justify-center font-bold font-sans flex-shrink-0 animate-pulse">➔</div>
+                    )}
                 </button>
               ))}
             </div>
             <DeliveryButtons keyword={subLayer} />
             <div className="mt-8">
-               <KitchenItemsSection />
+               {isSpecialCategory ? (
+                  <section className="bg-white border-4 border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827] w-full">
+                     <div className="flex flex-col items-center text-center">
+                        <div className="bg-[#ccfff5] border-[3px] border-[#111827] px-4 py-2 rounded-xl mb-4 -rotate-2">
+                           <h3 className="font-['Black_Han_Sans'] text-xl sm:text-2xl text-[#111827]">🛒 이 메뉴, 밀키트로 더 싸게!</h3>
+                        </div>
+                        <p className="text-sm sm:text-lg font-bold text-gray-700 mb-6 leading-relaxed">
+                           {subLayer} 메뉴를 집에서도 즐길 수 있는<br/>
+                           가성비 최고의 밀키트 리스트를 확인해보세요!
+                        </p>
+                        <button 
+                           onClick={() => navigate('/market')}
+                           className="w-full bg-[#E23B2A] text-white border-4 border-[#111827] py-4 rounded-2xl font-['Black_Han_Sans'] text-xl sm:text-2xl shadow-[4px_4px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2"
+                        >
+                           🎁 밀키트 보러가기 ➔
+                        </button>
+                     </div>
+                  </section>
+               ) : (
+                  <KitchenItemsSection />
+               )}
             </div>
         </div>
       </div>
