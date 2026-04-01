@@ -6,9 +6,10 @@ interface CurationDrawerProps {
   onClose: () => void;
   title: string;
   subMenus: string[];
+  icon?: string;
 }
 
-export default function CurationDrawer({ isOpen, onClose, title, subMenus }: CurationDrawerProps) {
+export default function CurationDrawer({ isOpen, onClose, title, subMenus, icon }: CurationDrawerProps) {
   const navigate = useNavigate();
 
   return (
@@ -33,16 +34,19 @@ export default function CurationDrawer({ isOpen, onClose, title, subMenus }: Cur
             className="fixed top-0 right-0 h-full w-[85%] max-w-[400px] bg-[#F1E8D9] z-[110] shadow-[-10px_0px_30px_rgba(0,0,0,0.3)] border-l-[6px] border-[#111827] flex flex-col"
           >
             {/* Header */}
-            <div className="p-6 border-b-[4px] border-[#111827] bg-[#E23B2A] text-white flex items-center justify-between">
-              <div>
-                <p className="text-xs sm:text-sm font-bold opacity-90 mb-1 leading-none">원하시는 메뉴를 선택하세요</p>
-                <h2 className="text-xl sm:text-2xl font-['Black_Han_Sans'] leading-tight">{title}</h2>
+            <div className="p-6 border-b-[4px] border-[#111827] bg-[#E23B2A] text-white flex items-center gap-4">
+              <div className="w-16 h-16 bg-white rounded-xl border-[3px] border-[#111827] flex-shrink-0 flex items-center justify-center p-2 shadow-[3px_3px_0px_#111827]">
+                <img src={icon || '/images/placeholder.png'} alt={title} className="w-full h-full object-contain" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm font-bold opacity-90 mb-1 leading-none">추천 메뉴 선택</p>
+                <h2 className="text-lg sm:text-xl font-['Black_Han_Sans'] leading-tight truncate">{title}</h2>
               </div>
               <button 
                 onClick={onClose}
-                className="bg-white text-[#111827] border-[3px] border-[#111827] p-2 rounded-full shadow-[3px_3px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
+                className="bg-white text-[#111827] border-[3px] border-[#111827] p-2 rounded-full shadow-[3px_3px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex-shrink-0"
               >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
             </div>
 
