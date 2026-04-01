@@ -191,6 +191,10 @@ export default function Home() {
      }
   };
 
+  const handleRandomMealKit = () => {
+    window.open('https://link.coupang.com/a/efHxp7', '_blank');
+  };
+
   if (subLayer) {
     return (
       <div className="min-h-screen flex flex-col items-center bg-[#F1E8D9] font-['Inter',_sans-serif] pb-20 pt-10 px-4 relative">
@@ -225,7 +229,7 @@ export default function Home() {
             <h1 className="text-[2.5rem] sm:text-6xl font-['Black_Han_Sans'] text-[#E23B2A] mb-4 drop-shadow-[2px_2px_0px_#111827] rotate-[-2deg] uppercase">{layer === 'root' ? '오늘 뭐 먹지?' : layer}</h1>
             <div className="flex flex-row gap-2 sm:gap-3 items-center justify-center mt-4 w-full px-2 max-w-[650px] mx-auto">
                 <button onClick={handleRandomPick} className="flex-1 w-full py-3 sm:py-4 bg-[#CCFF00] border-4 border-[#111827] rounded-[1.25rem] sm:rounded-[1.5rem] shadow-[3px_3px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] text-[#111827] font-['Black_Han_Sans'] text-base sm:text-xl hover:translate-x-[2px] hover:translate-y-[2px] -rotate-[2deg] break-keep leading-tight">🎲 {layer === 'root' ? '진짜 아무거나' : `${layer} 아무거나`}</button>
-                <button onClick={() => window.open('https://link.coupang.com/a/eflI8r', '_blank')} className="flex-1 w-full py-3 sm:py-4 bg-[#FF0080] border-4 border-[#111827] rounded-[1.25rem] sm:rounded-[1.5rem] shadow-[3px_3px_0px_#111827] sm:shadow-[4px_4px_0px_#111827] text-white font-['Black_Han_Sans'] text-base sm:text-xl hover:translate-x-[2px] hover:translate-y-[2px] rotate-[1deg] break-keep leading-tight">🚀 로켓 주문</button>
+                <button onClick={() => document.getElementById('curation-section')?.scrollIntoView({ behavior: 'smooth', block: 'center' })} className="flex-1 w-full py-3 sm:py-4 bg-[#00E5FF] border-4 border-[#111827] rounded-[1.25rem] sm:rounded-[1.5rem] shadow-[4px_4px_0px_#E23B2A] sm:shadow-[6px_6px_0px_#E23B2A] text-[#111827] font-['Black_Han_Sans'] text-lg sm:text-2xl hover:translate-x-[2px] hover:translate-y-[2px] rotate-[1deg] break-keep leading-tight animate-pulse transition-all">✨ 상황별 추천</button>
             </div>
         </div>
 
@@ -276,20 +280,26 @@ export default function Home() {
         <DeliveryButtons keyword={layer === 'root' ? undefined : layer} />
 
         {!subLayer && (
-            <div className="w-full max-w-[800px] mx-auto mt-12 mb-8 flex flex-col gap-10 relative z-10 px-2 sm:px-0">
+            <div className="w-full max-w-[800px] mx-auto mt-8 sm:mt-10 mb-12 flex flex-col gap-6 sm:gap-8 relative z-10 px-2 sm:px-0">
                 <section className="bg-[#ccfff5] border-[4px] border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827]">
-                  <div className="flex flex-col sm:flex-row sm:items-end gap-2 mb-6">
+                  <div className="flex flex-wrap items-center gap-2 mb-6">
                     <h2 className="text-2xl sm:text-3xl font-['Black_Han_Sans']">🛒 잘 나가는 밀키트</h2>
-                    <p className="text-[10px] sm:text-xs text-gray-500 font-medium pb-1 leading-tight">이 포스팅은 쿠팡 파트너스 활동의 일환으로 수수료를 제공받습니다.</p>
+                    <button 
+                      onClick={handleRandomMealKit}
+                      className="bg-[#E23B2A] text-white px-3 py-1 rounded-xl border-2 border-[#111827] shadow-[2px_2px_0px_#111827] active:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] font-['Black_Han_Sans'] text-sm sm:text-base flex items-center gap-1 transition-all"
+                    >
+                      🎲 랜덤 주문
+                    </button>
+                    <p className="text-[10px] sm:text-xs text-gray-500 font-medium pb-1 leading-tight sm:ml-auto w-full sm:w-auto text-left sm:text-right">이 포스팅은 쿠팡 파트너스 활동의 일환으로 수수료를 제공받습니다.</p>
                   </div>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 pb-2 place-items-center">
                     {randomizedMealKits.map((item, idx) => (
-                         <div key={`${item.id}-${idx}`} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[210px] sm:h-[295px] overflow-hidden">
-                              {layer === 'root' && idx === 0 && <div className="absolute -top-1 -left-1 z-30 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
-                              {layer === 'root' && idx === 1 && <div className="absolute -top-1 -left-1 z-30 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}
-                              {layer === 'root' && idx === 2 && <div className="absolute -top-1 -left-1 z-30 bg-[#FF9800] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[5deg] whitespace-nowrap">🍝 양식</div>}
-                              {layer === 'root' && idx === 3 && <div className="absolute -top-1 -left-1 z-30 bg-[#4CAF50] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] rotate-2 whitespace-nowrap">✨ 추천 품목</div>}
+                         <div key={`${item.id}-${idx}`} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[210px] sm:h-[295px]">
+                              {layer === 'root' && idx === 0 && <div className="absolute -top-3 -left-2 z-50 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
+                              {layer === 'root' && idx === 1 && <div className="absolute -top-3 -left-2 z-50 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}
+                              {layer === 'root' && idx === 2 && <div className="absolute -top-3 -left-2 z-50 bg-[#FF9800] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[5deg] whitespace-nowrap">🍝 양식</div>}
+                              {layer === 'root' && idx === 3 && <div className="absolute -top-3 -left-2 z-50 bg-[#4CAF50] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] rotate-2 whitespace-nowrap">✨ 추천 품목</div>}
                               {item.html && <div className="w-full flex items-center justify-center rounded-xl bg-white scale-75 sm:scale-100 origin-top mt-4 sm:mt-0" dangerouslySetInnerHTML={{ __html: item.html }} />}
                          </div>
                     ))}
