@@ -43,16 +43,16 @@ export const HOT_SPOTS = [
 ];
 
 export const CURATIONS = [
-  { id: 1, title: '비 오는 날 생각나는', menu: '전/부침개 & 면요리', subMenus: ['해물파전', '김치전', '짬뽕', '바지락칼국수'], imageUrl: '/images/category2/분식_7.png' },
-  { id: 2, title: '스트레스 팍! 풀 때', menu: '매운맛 끝판왕', subMenus: ['무뼈닭발', '마라탕', '떡볶이', '매운양념치킨'], imageUrl: '/images/category2/분식_5.png' },
-  { id: 3, title: '부담없는 가벼운 한끼', menu: '다이어트 & 건강식', subMenus: ['연어샐러드', '연어포케', '비건버거', '클럽샌드위치'], imageUrl: '/images/category2/아시안_8.png' },
-  { id: 4, title: '숙취 타파 해장 얼큰', menu: '속 풀리는 국물', subMenus: ['뼈해장국', '콩나물국밥', '소고기쌀국수', '짬뽕'], imageUrl: '/images/category2/korean_2.png' },
+  { id: 1, title: '비 오는 날 생각나는', menu: '전/부침개 & 면요리', subMenus: ['해물파전', '김치전', '짬뽕', '바지락칼국수'], imageUrl: '/images/category2/분식/야식_7.png' },
+  { id: 2, title: '스트레스 팍! 풀 때', menu: '매운맛 끝판왕', subMenus: ['무뼈닭발', '마라탕', '떡볶이', '매운양념치킨'], imageUrl: '/images/category2/분식/야식_5.png' },
+  { id: 3, title: '부담없는 가벼운 한끼', menu: '다이어트 & 건강식', subMenus: ['연어샐러드', '연어포케', '비건버거', '클럽샌드위치'], imageUrl: '/images/category2/아시안/기타_8.png' },
+  { id: 4, title: '숙취 타파 해장 얼큰', menu: '속 풀리는 국물', subMenus: ['뼈해장국', '콩나물국밥', '소고기쌀국수', '짬뽕'], imageUrl: '/images/category2/한식_2.png' },
   { id: 5, title: '아이들이 환호하는', menu: '인기 만점 키즈 메뉴', subMenus: ['치즈돈까스', '불고기피자', '싸이버거세트', '짜장면'], imageUrl: '/images/category2/일식_2.png' },
   { id: 6, title: '나를 위한 혼술 안주', menu: '가정용 바(Bar) 오픈', subMenus: ['닭강정', '모듬초밥', '야채곱창', '감바스알아히요'], imageUrl: '/images/category2/패스트푸드_1.png' },
-  { id: 7, title: '기력 회복 보양식', menu: '오늘 몸보신 어때요?', subMenus: ['삼계탕', '왕갈비탕', '추어탕', '장어초밥'], imageUrl: '/images/category2/korean_2.png' },
-  { id: 8, title: '입맛 돋우는 밥도둑', menu: '공기밥 순삭 보증', subMenus: ['간장게장', '안동찜닭', '갈치조림', '제육볶음'], imageUrl: '/images/category2/korean_3.png' },
+  { id: 7, title: '기력 회복 보양식', menu: '오늘 몸보신 어때요?', subMenus: ['삼계탕', '왕갈비탕', '추어탕', '장어초밥'], imageUrl: '/images/category2/한식_7.png' },
+  { id: 8, title: '입맛 돋우는 밥도둑', menu: '공기밥 순삭 보증', subMenus: ['간장게장', '안동찜닭', '갈치조림', '제육볶음'], imageUrl: '/images/category2/한식_3.png' },
   { id: 9, title: '달콤한 디저트 타임', menu: '기분 좋아지는 단맛', subMenus: ['치즈케이크', '크로플', '망고빙수', '에그타르트'], imageUrl: '/images/category2/디저트_4.png' },
-  { id: 10, title: '고기 없인 못 살아', menu: '단백질 듬뿍 메인', subMenus: ['삼겹살구이', '불고기', '안심스테이크', '양념치킨'], imageUrl: '/images/category2/korean_1.png' },
+  { id: 10, title: '고기 없인 못 살아', menu: '단백질 듬뿍 메인', subMenus: ['삼겹살구이', '불고기', '안심스테이크', '양념치킨'], imageUrl: '/images/category2/한식_1.png' },
 ];
 
 export const KITCHEN_ITEMS = [

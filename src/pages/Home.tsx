@@ -154,7 +154,7 @@ export default function Home() {
                   </div>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 pb-2 place-items-center">
-                    {subLayerMealKits.map((item, idx) => (
+                    {subLayerMealKits.map((item: any, idx: number) => (
                          <div key={`${item.id}-${idx}`} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[210px] sm:h-[295px]">
                               {item.html && <div className="w-full flex items-center justify-center rounded-xl bg-white scale-75 sm:scale-100 origin-top mt-4 sm:mt-0" dangerouslySetInnerHTML={{ __html: item.html }} />}
                          </div>
@@ -258,7 +258,7 @@ export default function Home() {
                   </div>
                   
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 pb-2 place-items-center">
-                    {randomizedMealKits.map((item, idx) => (
+                    {randomizedMealKits.map((item: any, idx: number) => (
                          <div key={`${item.id}-${idx}`} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[210px] sm:h-[295px]">
                               {layer === 'root' && idx === 0 && <div className="absolute -top-3 -left-2 z-50 bg-[#E23B2A] text-white font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-[8deg] whitespace-nowrap animate-pulse">🔥 HOT 한식</div>}
                               {layer === 'root' && idx === 1 && <div className="absolute -top-3 -left-2 z-50 bg-[#00E5FF] text-[#111827] font-['Black_Han_Sans'] text-[10px] sm:text-xs px-2 py-1 rounded-full border-2 border-[#111827] shadow-[2px_2px_0px_#111827] -rotate-3 whitespace-nowrap">🍜 아시안</div>}

@@ -2,12 +2,31 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CURATIONS } from '../data/partnersData';
+import { subCategories, menusBySubCategory, rootStyles } from '../data/categoryData';
 import CurationDrawer from '../components/CurationDrawer';
 
 export default function CurationList() {
   const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedCuration, setSelectedCuration] = useState<typeof CURATIONS[0] | null>(null);
+
+  const getCategoryIconForCuration = (subMenus: string[]) => {
+    const categoriesAtSubMenus = subMenus.map(menu => {
+      for (const [rootCat, subCats] of Object.entries(subCategories)) {
+        for (const subCat of subCats) {
+          if (menusBySubCategory[subCat]?.includes(menu)) {
+            return rootCat;
+          }
+        }
+      }
+      return null;
+    }).filter(Boolean) as string[];
+
+    const uniqueCats = Array.from(new Set(categoriesAtSubMenus));
+    if (uniqueCats.length === 0) return '/images/placeholder.png';
+    const randomCat = uniqueCats[Math.floor(Math.random() * uniqueCats.length)];
+    return rootStyles[randomCat]?.img || '/images/placeholder.png';
+  };
 
   const handleCurationClick = (cur: typeof CURATIONS[0]) => {
     setSelectedCuration(cur);
@@ -51,7 +70,7 @@ export default function CurationList() {
           }}
           className="flex flex-col gap-5 sm:gap-6 mt-12"
         >
-          {CURATIONS.map((cur) => (
+          {CURATIONS.map((cur: any) => (
             <motion.button
               variants={{
                 hidden: { opacity: 0, y: 20 },
@@ -81,6 +100,7 @@ export default function CurationList() {
         onClose={() => setIsDrawerOpen(false)}
         title={selectedCuration?.menu || ''}
         subMenus={selectedCuration?.subMenus || []}
+        icon={selectedCuration ? getCategoryIconForCuration(selectedCuration.subMenus) : undefined}
       />
     </div>
   );
