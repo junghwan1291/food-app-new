@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { MEAL_KITS, HOT_SPOTS, LANDING_MEAL_KITS } from '../data/partnersData';
+import { MEAL_KITS, HOT_SPOTS } from '../data/partnersData';
 import { FOOD_DETAILS, DEFAULT_FOOD_DETAIL } from '../data/foodDetailsData';
 import DeliveryButtons from '../components/DeliveryButtons';
 import CurationSection from '../components/CurationSection';
@@ -148,26 +148,31 @@ const getFranchiseBrands = (menu: string) => {
   return DEFAULT_FRANCHISE;
 };
 
-const getShuffledMealKits = (category: string) => {
-  const categorySubs = subCategories[category] || [];
-  let allMenuNames: string[] = [];
-  categorySubs.forEach(sub => {
-    if (menusBySubCategory[sub]) {
-      allMenuNames = [...allMenuNames, ...menusBySubCategory[sub]];
+const getShuffledMealKitsFromItems = (items: string[], limit: number) => {
+  let allKits: any[] = [];
+  items.forEach(item => {
+    const detail = FOOD_DETAILS[item] || DEFAULT_FOOD_DETAIL(item);
+    if (detail && detail.mealKits && detail.mealKits.length > 0) {
+      allKits = [...allKits, ...detail.mealKits];
     }
   });
 
-  if (allMenuNames.length === 0) return MEAL_KITS['root'].slice(0, 4);
+  if (allKits.length === 0) return MEAL_KITS['root'].slice(0, limit);
+  
+  return [...allKits].sort(() => 0.5 - Math.random()).slice(0, limit);
+};
 
-  // 무작위로 섞고 상위 4개 선택
-  const shuffled = [...allMenuNames].sort(() => 0.5 - Math.random());
-  const selectedMenus = shuffled.slice(0, 4);
-
-  return selectedMenus.map((menuName, idx) => {
-    const detail = FOOD_DETAILS[menuName] || DEFAULT_FOOD_DETAIL(menuName);
-    // 각 메뉴의 첫 번째 밀키트를 가져옴 (없으면 root의 기본값 활용)
-    return detail.mealKits[0] || { ...MEAL_KITS['root'][0], id: 999 + idx };
+const getMealKitsByCategoryGroup = (rootCats: string[], limit: number) => {
+  let allItems: string[] = [];
+  rootCats.forEach(rc => {
+    const subs = subCategories[rc] || [];
+    subs.filter(s => s !== '뒤로가기').forEach(s => {
+      if (menusBySubCategory[s]) {
+        allItems = [...allItems, ...menusBySubCategory[s]];
+      }
+    });
   });
+  return getShuffledMealKitsFromItems(allItems, limit);
 };
 
 const rootStyles: Record<string, { bg: string, textObj: string, textShadow: string, font: string, img: string }> = {
@@ -209,15 +214,27 @@ export default function Home() {
 
   const randomizedMealKits = useMemo(() => {
     if (layer === 'root') {
+      const hotKorean = getMealKitsByCategoryGroup(['한식'], 1);
+      const asian = getMealKitsByCategoryGroup(['중식', '일식', '분식/야식', '아시안/기타'], 1);
+      const western = getMealKitsByCategoryGroup(['양식'], 1);
+      const general = getMealKitsByCategoryGroup(rootCategories, 1);
+      
       return [
-        LANDING_MEAL_KITS.hotKorean,
-        LANDING_MEAL_KITS.asian,
-        LANDING_MEAL_KITS.western,
-        LANDING_MEAL_KITS.general
+        hotKorean[0] || MEAL_KITS['root'][0],
+        asian[0] || MEAL_KITS['root'][1],
+        western[0] || MEAL_KITS['root'][2],
+        general[0] || MEAL_KITS['root'][3]
       ];
     }
-    return getShuffledMealKits(layer);
+    
+    // 카테고리 레이어일 때 (한식, 중식 등)
+    return getMealKitsByCategoryGroup([layer], 4);
   }, [layer]);
+
+  const subLayerMealKits = useMemo(() => {
+    if (!subLayer) return [];
+    return getShuffledMealKitsFromItems(menusBySubCategory[subLayer] || [], 4);
+  }, [subLayer]);
 
   const currentGridIndex = layer === 'root' ? rootCategories : subCategories[layer];
 
@@ -233,10 +250,6 @@ export default function Home() {
         const randomItem = flatLists[Math.floor(Math.random() * flatLists.length)];
         navigate(`/category/${randomItem}`);
      }
-  };
-
-  const handleRandomMealKit = () => {
-    window.open('https://link.coupang.com/a/efHxp7', '_blank');
   };
 
   if (subLayer) {
@@ -275,8 +288,23 @@ export default function Home() {
                 </button>
               ))}
             </div>
-            <DeliveryButtons keyword={subLayer} />
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col gap-6">
+               {/* 🛒 추천 밀키트 섹션 신설 */}
+               <section className="bg-[#ccfff5] border-[4px] border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827] w-full">
+                  <div className="flex flex-wrap items-center gap-2 mb-6">
+                    <h2 className="text-2xl sm:text-3xl font-['Black_Han_Sans']">🛒 추천 밀키트</h2>
+                    <p className="text-[10px] sm:text-xs text-gray-500 font-medium pb-1 leading-tight sm:ml-auto w-full sm:w-auto text-left sm:text-right">이 포스팅은 쿠팡 파트너스 활동의 일환으로 수수료를 제공받습니다.</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 pb-2 place-items-center">
+                    {subLayerMealKits.map((item, idx) => (
+                         <div key={`${item.id}-${idx}`} className="relative w-full max-w-[190px] flex flex-col items-center justify-center bg-white border-[3px] border-[#111827] rounded-2xl shadow-[4px_4px_0px_#111827] px-1 h-[210px] sm:h-[295px]">
+                              {item.html && <div className="w-full flex items-center justify-center rounded-xl bg-white scale-75 sm:scale-100 origin-top mt-4 sm:mt-0" dangerouslySetInnerHTML={{ __html: item.html }} />}
+                         </div>
+                    ))}
+                  </div>
+               </section>
+
                {isSpecialCategory ? (
                   <section className="bg-white border-4 border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827] w-full">
                      <div className="flex flex-col items-center text-center">
@@ -366,12 +394,6 @@ export default function Home() {
                 <section className="bg-[#ccfff5] border-[4px] border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827]">
                   <div className="flex flex-wrap items-center gap-2 mb-6">
                     <h2 className="text-2xl sm:text-3xl font-['Black_Han_Sans']">🛒 잘 나가는 밀키트</h2>
-                    <button 
-                      onClick={handleRandomMealKit}
-                      className="bg-[#E23B2A] text-white px-3 py-1 rounded-xl border-2 border-[#111827] shadow-[2px_2px_0px_#111827] active:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] font-['Black_Han_Sans'] text-sm sm:text-base flex items-center gap-1 transition-all"
-                    >
-                      🎲 랜덤 주문
-                    </button>
                     <p className="text-[10px] sm:text-xs text-gray-500 font-medium pb-1 leading-tight sm:ml-auto w-full sm:w-auto text-left sm:text-right">이 포스팅은 쿠팡 파트너스 활동의 일환으로 수수료를 제공받습니다.</p>
                   </div>
                   
