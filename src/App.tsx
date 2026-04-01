@@ -6,10 +6,12 @@ import Market from './pages/Market';
 import CurationList from './pages/CurationList';
 import KitchenItemList from './pages/KitchenItemList';
 import FloatingActions from './components/FloatingActions';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="w-full bg-[#F1E8D9]">
         <main className="w-full">
           <Routes>
