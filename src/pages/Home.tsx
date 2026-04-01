@@ -238,9 +238,10 @@ export default function Home() {
               const category2ImgIndex = index > 4 ? index : index + 1; // 1~8 스킵 처리
               const imgToUse = isRoot ? s.img : `/images/category2/${layer}_${category2ImgIndex}.png`;
 
+              const isLongWord = itemName.length > 4;
               let containerClass = `${s.bg} border-[3px] sm:border-4 border-[#111827] shadow-[4px_4px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] overflow-hidden relative transition-all`;
               let textWrapper = "absolute top-1 sm:top-2 w-full text-center z-20 px-1";
-              let typography = `text-xl sm:text-2xl ${isRoot ? s.font : 'font-["Black_Han_Sans"]'} text-[#111827] bg-white px-2 sm:px-3 py-1 border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#E23B2A] -rotate-3 inline-block leading-tight break-keep`;
+              let typography = `${isLongWord ? 'text-[0.95rem]' : 'text-xl'} sm:text-2xl ${isRoot ? s.font : 'font-["Black_Han_Sans"]'} text-[#111827] bg-white px-2 sm:px-3 py-1 border-2 sm:border-4 border-[#111827] shadow-[2px_2px_0px_#E23B2A] -rotate-3 inline-block leading-tight break-keep whitespace-nowrap`;
 
               if (isCenter) {
                   containerClass = isRoot ? "bg-[#E23B2A] border-[4px] border-[#111827] shadow-[5px_5px_0px_#111827]" : "bg-white border-[4px] border-[#111827] shadow-[5px_5px_0px_#111827]";

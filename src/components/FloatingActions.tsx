@@ -69,22 +69,24 @@ export default function FloatingActions() {
       {isHome && (
         <button
           onClick={handleInstallClick}
-          className="w-14 h-14 bg-[#111827] rounded-full shadow-[3px_3px_0px_#E23B2A] flex items-center justify-center hover:-translate-y-1 transition-transform border-2 border-white"
+          className="h-14 px-5 bg-[#111827] rounded-full shadow-[3px_3px_0px_#E23B2A] flex items-center justify-center hover:-translate-y-1 transition-transform border-2 border-white gap-2"
           title="홈 화면에 추가"
         >
-          <span className="text-2xl">📱</span>
+          <span className="text-[1.6rem] leading-none mb-1">📱</span>
+          <span className="text-white font-['Black_Han_Sans'] text-lg tracking-wide whitespace-nowrap">앱 설치</span>
         </button>
       )}
 
       {/* Kakao Share - Everywhere */}
       <button
         onClick={handleKakaoShare}
-        className="w-14 h-14 bg-[#FEE500] rounded-full shadow-[3px_3px_0px_#111827] flex items-center justify-center hover:-translate-y-1 transition-transform border-2 border-[#111827]"
+        className="h-14 px-5 bg-[#FEE500] rounded-full shadow-[3px_3px_0px_#111827] flex items-center justify-center hover:-translate-y-1 transition-transform border-2 border-[#111827] gap-2"
         title="카카오톡 공유하기"
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd" d="M12 3C6.477 3 2 6.545 2 10.916c0 2.84 1.83 5.318 4.633 6.72-.18.665-.63 2.37-.65 2.454-.035.152.053.148.113.11 0 0 2.721-1.787 3.86-2.585.66.07 1.345.105 2.044.105 5.523 0 10-3.546 10-7.917C22 6.545 17.523 3 12 3z" fill="#000000"/>
         </svg>
+        <span className="text-[#111827] font-['Black_Han_Sans'] text-lg tracking-wide whitespace-nowrap">공유</span>
       </button>
     </div>
   );
