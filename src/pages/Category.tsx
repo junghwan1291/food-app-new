@@ -53,87 +53,73 @@ export default function Category() {
          <section className="animate-fade-in delay-100">
             <button 
                onClick={() => window.open(`https://map.naver.com/v5/search/${encodeURIComponent(detail.id)}`, '_blank')}
-               className="w-full mb-4 bg-[#111827] text-white py-6 rounded-[1.5rem] sm:rounded-[2rem] font-['Black_Han_Sans'] text-2xl sm:text-4xl shadow-[6px_6px_0px_#E23B2A] hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
+               className="w-full mb-2 bg-[#111827] text-white py-3 sm:py-4 rounded-[1.2rem] sm:rounded-[1.5rem] font-['Black_Han_Sans'] text-xl sm:text-2xl shadow-[4px_4px_0px_#E23B2A] hover:translate-x-[1px] hover:translate-y-[1px] transition-all"
             >
                네이버 지도로 주변 식당 찾기
             </button>
 
             <DeliveryButtons keyword={name || ''} />
 
-            <div className="flex items-center gap-3 mb-6 mt-6 sm:mt-10">
-               <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827]">🍽️ 요즘 핫한 식당</h2>
+            <div className="flex items-center gap-3 mb-4 mt-8">
+               <h2 className="text-xl sm:text-3xl font-['Black_Han_Sans'] text-[#111827]">🍽️ 요즘 핫한 식당</h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                {detail.restaurants.map((res, idx) => (
                   <a 
                     key={idx}
                     href={`https://map.naver.com/v5/search/${encodeURIComponent(res.name)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white border-[4px] border-[#111827] p-5 sm:p-6 rounded-[2rem] shadow-[6px_6px_0px_#111827] hover:scale-[1.02] transition-transform flex flex-col items-start"
+                    className="bg-white border-[3px] border-[#111827] p-3 sm:p-4 rounded-2xl shadow-[4px_4px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-between gap-3"
                   >
-                     <span className="text-[#E23B2A] font-bold text-lg sm:text-xl mb-1">{res.rating}</span>
-                     <h3 className="text-xl sm:text-2xl font-['Black_Han_Sans'] text-[#111827] mb-2">{res.name}</h3>
-                     <p className="text-gray-500 font-semibold flex items-center gap-1 text-sm sm:text-base">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zm1.42 1.42a5 5 0 107.07 7.07L10 15.07l-3.54-3.54a5 5 0 000-7.07zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
-                        {res.location}
-                     </p>
+                     <div className="flex flex-col items-start min-w-0">
+                        <h3 className="text-base sm:text-lg font-['Black_Han_Sans'] text-[#111827] truncate w-full">{res.name}</h3>
+                        <p className="text-gray-500 font-medium flex items-center gap-1 text-[11px] sm:text-sm mt-0.5">
+                           <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zm1.42 1.42a5 5 0 107.07 7.07L10 15.07l-3.54-3.54a5 5 0 000-7.07zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path></svg>
+                           <span className="truncate">{res.location}</span>
+                        </p>
+                     </div>
+                     <div className="flex shrink-0">
+                        <span className="text-[#E23B2A] font-bold text-xs sm:text-sm bg-[#FFF9C4] px-2 py-1 rounded-lg border-2 border-[#111827] whitespace-nowrap">{res.rating}</span>
+                     </div>
                   </a>
                ))}
             </div>
 
          </section>
 
-         {/* 섹션 2: 🛒 밀키트 주문 */}
-         <section className="bg-[#ccfff5] border-[4px] border-[#111827] rounded-[2.5rem] p-6 sm:p-10 shadow-[8px_8px_0px_#111827]">
-            <h2 className="text-2xl sm:text-4xl font-['Black_Han_Sans'] text-[#111827] mb-8 text-center">🛒 집에서 즐기는 밀키트</h2>
+         <section className="bg-[#ccfff5] border-[4px] border-[#111827] rounded-[2rem] p-5 sm:p-8 shadow-[6px_6px_0px_#111827]">
+            <h2 className="text-xl sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-6 text-center">🛒 집에서 즐기는 밀키트</h2>
             <div className="flex flex-col items-center gap-6">
                {detail.mealKits.length > 0 && (
                   <div className="bg-white border-[3px] border-[#111827] rounded-2xl px-1 w-full max-w-[170px] flex items-center justify-center shadow-[4px_4px_0px_#111827] overflow-hidden h-[210px] sm:h-[295px]">
                      <div className="w-full flex items-center justify-center rounded-xl scale-75 sm:scale-100 origin-top mt-4 sm:mt-0" dangerouslySetInnerHTML={{ __html: detail.mealKits[0].html }} />
                   </div>
                )}
-               <button 
-                  onClick={() => navigate('/market')}
-                  className="w-full max-w-xs bg-[#E23B2A] text-white border-[3px] border-[#111827] py-4 rounded-xl font-['Black_Han_Sans'] text-xl shadow-[4px_4px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
-               >
-                  🛒 쿠팡에서 주문하기
-               </button>
             </div>
          </section>
 
-         {/* 섹션 3: 🍳 재료 구매 */}
-         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            {/* 재료 리스트 */}
-            <div className="bg-[#FFF9C4] border-[4px] border-[#111827] p-8 rounded-[2rem] shadow-[8px_8px_0px_#111827] -rotate-1">
-               <h2 className="text-2xl sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-6">🍳 레시피 재료 리스트</h2>
-               <ul className="space-y-3">
+         <section className="w-full max-w-2xl mx-auto">
+            <div className="bg-[#FFF9C4] border-[4px] border-[#111827] p-6 sm:p-8 rounded-[2rem] shadow-[6px_6px_0px_#111827]">
+               <h2 className="text-xl sm:text-3xl font-['Black_Han_Sans'] text-[#111827] mb-5">🍳 레시피 재료 리스트</h2>
+               <ul className="space-y-3 mb-6">
                   {detail.ingredients.map((ing, idx) => (
-                     <li key={idx} className="flex items-center gap-3 font-bold text-[#111827]">
-                        <div className="w-5 h-5 border-2 border-[#111827] rounded bg-white flex items-center justify-center shrink-0">
-                           <div className="w-3 h-3 bg-[#E23B2A] rounded-sm shadow-inner" />
+                     <li key={idx} className="flex items-center gap-3 font-bold text-[#111827] text-sm sm:text-base">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#111827] rounded bg-white flex items-center justify-center shrink-0">
+                           <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#E23B2A] rounded-sm shadow-inner" />
                         </div>
                         {ing}
                      </li>
                   ))}
                </ul>
-            </div>
-
-            {/* 핵심 재료 쿠팡 링크 */}
-            <div className="bg-[#FF9800] border-[4px] border-[#111827] p-8 rounded-[2rem] shadow-[8px_8px_0px_#111827] rotate-1 flex flex-col h-full">
-               <h2 className="text-2xl sm:text-3xl font-['Black_Han_Sans'] text-white mb-6 drop-shadow-[2px_2px_0px_#111827]">🥕 핵심 재료 바로구매</h2>
-               <p className="text-white font-bold mb-8 leading-relaxed">
-                  {detail.id}의 깊은 맛은 재료에서 결정됩니다! <br/>
-                  최고 퀄리티의 주재료를 엄선했습니다.
-               </p>
                <a 
                   href={detail.mainIngredientLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto w-full bg-white text-[#111827] border-[4px] border-[#111827] py-5 rounded-2xl font-['Black_Han_Sans'] text-2xl text-center shadow-[4px_4px_0px_#111827] hover:scale-[1.05] transition-transform active:scale-95"
+                  className="w-full bg-[#FF9800] text-white border-[3px] border-[#111827] py-3 sm:py-4 rounded-xl font-['Black_Han_Sans'] text-lg sm:text-xl text-center shadow-[4px_4px_0px_#111827] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2 block"
                >
-                  재료 사러가기 ➔
+                  🥕 핵심 재료 바로구매 ➔
                </a>
             </div>
          </section>
